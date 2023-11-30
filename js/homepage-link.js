@@ -1,20 +1,4 @@
-document.addEventListener("DOMContentLoaded", onInit);
-
-function onInit() {
-  initTitle();
-  initBackToHomepageLink();
-
-  console.log("Page is initialized!");
-}
-
-function initTitle() {
-  const name = "ProIT Static Page";
-  if (document.title.includes(name)) {
-    return;
-  }
-
-  document.title = `${document.title} - ${name}` + " (DEV)"; // TODO dev indicator
-}
+pageInitCallbacks.push(initBackToHomepageLink);
 
 function initBackToHomepageLink() {
   let firstNav = document.querySelector("body nav");
