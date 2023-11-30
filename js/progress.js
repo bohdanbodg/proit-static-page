@@ -19,21 +19,13 @@ function initProgressIndicators() {
 }
 
 function createAndAppendProgressElement(container, name, value, max) {
-  const marginHorizontal = "8px";
-
-  container.appendChild(
-    createProgressLabelElement(name, value, {
-      "margin-right": marginHorizontal,
-    })
-  );
-
   let progress = document.createElement("progress");
   (progress.id = name), (progress.value = value), (progress.max = max);
   container.appendChild(progress);
 
   container.appendChild(
-    createProgressLabelElement(name, max, {
-      "margin-left": marginHorizontal,
+    createProgressLabelElement(name, `${value}/${max}`, {
+      "margin-left": "8px",
     })
   );
 }
