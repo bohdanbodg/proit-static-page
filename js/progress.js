@@ -1,45 +1,43 @@
-pageInitCallbacks.push(initProgressIndicators);
-
-function initProgressIndicators() {
-  let progressContainers = document.querySelectorAll("#progress");
-  if (progressContainers.length === 0) {
-    return;
-  }
-
-  progressContainers.forEach(function (container) {
-    let name = container.getAttribute("name"),
-      value = container.getAttribute("value"),
-      max = container.getAttribute("max");
-    if (name === null || value === null || max === null) {
-      return;
+new Object({
+  init: function () {
+    let progressContainers = document.querySelectorAll("div.progress");
+    if (progressContainers.length === 0) {
+      return this;
     }
 
-    createAndAppendProgressElement(container, name, value, max);
-  });
-}
+    const self = this;
+    progressContainers.forEach(function (container) {
+      let value = container.getAttribute("value"),
+        max = container.getAttribute("max");
+      if (value === null || max === null) {
+        return;
+      }
 
-function createAndAppendProgressElement(container, name, value, max) {
-  let progress = document.createElement("progress");
-  (progress.id = name), (progress.value = value), (progress.max = max);
-  container.appendChild(progress);
+      container.classList.add("h-auto", "w-auto", "mb-2");
 
-  container.appendChild(
-    createProgressLabelElement(name, `${value}/${max}`, {
-      "margin-left": "8px",
-    })
-  );
-}
+      container.appendChild(self.createProgressElement(value, max));
+    });
 
-function createProgressLabelElement(name, text, styles = {}) {
-  let label = document.createElement("label");
-  label.appendChild(document.createTextNode(text));
-  label.setAttribute("for", name);
+    return this;
+  },
 
-  let stylesString = "vertical-align: top;";
-  for (const [key, value] of Object.entries(styles)) {
-    stylesString += `${key}: ${value};`;
-  }
-  label.setAttribute("style", stylesString);
+  createProgressElement: function (value, max) {
+    const donePercent = Math.round((value / max) * 100);
+    const progressText = document.createElement("span");
+    progressText.classList.add("mx-2", "my-1");
+    progressText.appendChild(
+      document.createTextNode(`${donePercent}% (${value}/${max})`)
+    );
 
-  return label;
-}
+    let progressElement = document.createElement("div");
+    progressElement.classList.add("progress-bar", "bg-warning", "text-dark");
+    progressElement.setAttribute("aria-valuemin", "0");
+    progressElement.setAttribute("aria-valuenow", value);
+    progressElement.setAttribute("aria-valuemax", max);
+    progressElement.setAttribute("role", "progressbar");
+    progressElement.setAttribute("style", `width: ${donePercent}%`);
+    progressElement.appendChild(progressText);
+
+    return progressElement;
+  },
+}).init();

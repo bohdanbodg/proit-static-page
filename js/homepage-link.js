@@ -1,15 +1,20 @@
-pageInitCallbacks.push(initBackToHomepageLink);
+new Object({
+  init: function () {
+    let firstContainer = document.querySelector("body div.container");
+    if (firstContainer === null) {
+      return this;
+    }
 
-function initBackToHomepageLink() {
-  let firstNav = document.querySelector("body nav");
-  if (firstNav === null) {
-    return;
-  }
+    let backHomeLink = document.createElement("a");
+    backHomeLink.appendChild(document.createTextNode("Back to Home Page"));
+    backHomeLink.title = "Home Page";
+    backHomeLink.href = "/index.html";
 
-  let backHomeLink = document.createElement("a");
-  backHomeLink.appendChild(document.createTextNode("Back to Home Page"));
-  backHomeLink.title = "Home Page";
-  backHomeLink.href = "/index.html";
+    let navElement = document.createElement("nav");
+    navElement.appendChild(backHomeLink);
 
-  firstNav.insertBefore(backHomeLink, firstNav.firstChild);
-}
+    firstContainer.insertBefore(navElement, firstContainer.firstChild);
+
+    return this;
+  },
+}).init();

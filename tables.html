@@ -4,66 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tables</title>
-    <script src="js/init.js"></script>
-    <script src="js/homepage-link.js"></script>
-    <script src="js/loaded.js"></script>
+    <script src="js/init.js" components="homepage-link"></script>
   </head>
   <body>
-    <nav></nav>
-    <h1>Tables</h1>
-    <h2>Best laptops of 2023</h2>
-    <table border="2" cellpadding="10" cellspacing="2">
-      <caption>
-        Table 1
-      </caption>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Best at</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Acer Aspire 3</td>
-          <td>Budget laptop</td>
-        </tr>
-        <tr>
-          <td>Dell Inspiron Plus 16 7630</td>
-          <td>Midrange laptop</td>
-        </tr>
-        <tr>
-          <td>Dell XPS 13 Plus</td>
-          <td>Ultraportable</td>
-        </tr>
-        <tr>
-          <td>Razer Blade 14 (2023)</td>
-          <td>Gaming laptop</td>
-        </tr>
-        <tr>
-          <td>HP Dragonfly Pro</td>
-          <td>MacBook alternative</td>
-        </tr>
-        <tr>
-          <td>Dell XPS 17 9730</td>
-          <td>Content creation laptop</td>
-        </tr>
-        <tr>
-          <td>Samsung Galaxy Book3 Pro 360</td>
-          <td>Laptop for students</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="2">
-            Source of data -
-            <a
-              href="https://www.pcworld.com/article/436674/the-best-pc-laptops-of-the-year.html"
-            >
-              PCWord
-            </a>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
+    <div class="container">
+      <h1>Tables</h1>
+      <h2>Best laptops of 2023</h2>
+      <table border="2" cellpadding="10" cellspacing="2" class="table">
+        <caption class="text-right">
+          Table 1
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Best at</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Acer Aspire 3</td>
+            <td>Budget laptop</td>
+          </tr>
+          <tr>
+            <td>Dell Inspiron Plus 16 7630</td>
+            <td>Midrange laptop</td>
+          </tr>
+          <tr>
+            <td>Dell XPS 13 Plus</td>
+            <td>Ultraportable</td>
+          </tr>
+          <tr>
+            <td>Razer Blade 14 (2023)</td>
+            <td>Gaming laptop</td>
+          </tr>
+          <tr>
+            <td>HP Dragonfly Pro</td>
+            <td>MacBook alternative</td>
+          </tr>
+          <tr>
+            <td>Dell XPS 17 9730</td>
+            <td>Content creation laptop</td>
+          </tr>
+          <tr>
+            <td>Samsung Galaxy Book3 Pro 360</td>
+            <td>Laptop for students</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="2" class="text-center">
+              Source of data -
+              <a
+                href="https://www.pcworld.com/article/436674/the-best-pc-laptops-of-the-year.html"
+              >
+                PCWord
+              </a>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </body>
 </html>
