@@ -2,10 +2,11 @@ new Object({
   init: function () {
     this.loadStyles([
       {
-        url: "https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css",
+        name: "Bootstrap 5.1.3",
+        url: "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
         attributes: {
           integrity:
-            "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
+            "sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3",
           crossorigin: "anonymous",
         },
       },
@@ -81,6 +82,7 @@ new Object({
     styles.forEach(function (style) {
       let styleElement = document.createElement("link");
       styleElement.href = style.url;
+      styleElement.title = style.name;
       styleElement.rel = "stylesheet";
 
       for (const [key, value] of Object.entries(style.attributes)) {
