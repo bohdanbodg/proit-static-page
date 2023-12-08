@@ -10,7 +10,7 @@
     <div class="container">
       <h1>Forms</h1>
       <h2 id="contact-us">Contact Us</h2>
-      <form action="/forms/contact" method="POST" class="mb-4">
+      <form action="/form/contact" method="POST" class="mb-4">
         <div class="mb-2">
           <label for="email">Email</label>
           <input
@@ -33,10 +33,10 @@
             required
           ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary px-4">Send</button>
+        <button type="submit" class="btn btn-dark px-4" autofocus>Send</button>
       </form>
       <h2 id="share-info">Share Information</h2>
-      <form action="/forms/info" method="POST" class="mb-4">
+      <form action="/form/info" method="POST" class="mb-4">
         <div class="mb-2">
           <label for="name">Name</label>
           <input
@@ -134,6 +134,9 @@
           ></textarea>
         </div>
         <button type="submit" class="btn btn-primary px-4">Send</button>
+        <button type="reset" class="btn btn-warning px-4" disabled>
+          Reset (unavailable)
+        </button>
       </form>
     </div>
   </body>
