@@ -1,4 +1,6 @@
-new Object({
+globalComponent.addComponent({
+  name: "progress",
+
   init: function () {
     let progressContainers = document.querySelectorAll("div.progress");
     if (progressContainers.length === 0) {
@@ -40,4 +42,4 @@ new Object({
 
     return progressElement;
   },
-}).init();
+});

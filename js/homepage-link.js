@@ -1,4 +1,6 @@
-new Object({
+globalComponent.addComponent({
+  name: "homepage-link",
+
   init: function () {
     let firstContainer = document.querySelector("body div.container");
     if (firstContainer === null) {
@@ -17,4 +19,4 @@ new Object({
 
     return this;
   },
-}).init();
+});
