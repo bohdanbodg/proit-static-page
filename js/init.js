@@ -1,3 +1,4 @@
+// Implementing a short form method for iterating through object entries
 Object.prototype.oforEach = function (callback) {
   for (const [key, value] of Object.entries(this)) {
     callback(value, key);
@@ -37,14 +38,16 @@ var globalComponent = {
       return;
     }
 
-    document.title = `${document.title} - ${this.pageTitle}` + " (DEV)"; // TODO dev indicator
+    document.title = `${document.title} - ${this.pageTitle}` + " (DEV)"; // TODO: Remove dev indicator before release deploy
   },
 
   getComponentPath: function (component) {
+    // Build the component path
     return `js/${component}.js`;
   },
 
   addComponent: function (componentObject) {
+    // Don't add the component if it doesn't have name or was already added
     if (
       typeof componentObject.name === "undefined" ||
       componentObject.name in this.components
@@ -52,13 +55,15 @@ var globalComponent = {
       return;
     }
 
+    // Add the component object and initialize if it has an initialization method
     this.components[componentObject.name] =
       typeof componentObject.init === "undefined"
         ? componentObject
         : componentObject.init();
   },
 
-  readComponents: function (attributeName) {
+  readComponents: function (attributeName, separator = ";") {
+    // Get the global component script
     const script = document.querySelector(`script[${attributeName}]`);
     if (
       script === null ||
@@ -67,12 +72,13 @@ var globalComponent = {
       return [];
     }
 
+    // Read components from the attribute
     const components = script.getAttribute(attributeName);
     if (components === null) {
       return [];
     }
 
-    return components.split(";");
+    return components.split(separator);
   },
 
   loadComponents: function (componentsAttribute) {
@@ -86,6 +92,7 @@ var globalComponent = {
 
     const self = this;
     components.forEach(function (component) {
+      // Avoid an attempt of loading the global component since it is already loaded on the beggining
       if (component === self.name) {
         return;
       }
@@ -110,6 +117,15 @@ var globalComponent = {
     this.loadHeadData("Scripts", "script", scripts);
   },
 
+  /**
+   * Create and append the element to the page head container
+   *
+   * @param {String} name
+   * @param {String} tag
+   * @param {Array} data
+   * @param {Object} defaultData
+   * @returns
+   */
   loadHeadData: function (name, tag, data, defaultData = null) {
     if (!Array.isArray(data) || data.length === 0) {
       console.info(`No ${name} found.`);
@@ -120,16 +136,19 @@ var globalComponent = {
     data.forEach(function (entry) {
       let tagElement = document.createElement(tag);
 
+      // Set the element default data
       if (defaultData !== null && typeof defaultData === "object") {
         defaultData.oforEach(function (defaultValue, defaultKey) {
           tagElement[defaultKey] = defaultValue;
         });
       }
 
+      // Set the element main data
       entry.oforEach(function (value, key) {
         tagElement[key] = value;
       });
 
+      // Set the element attribute data
       entry.attributes.oforEach(function (attributeValue, attributeKey) {
         tagElement.setAttribute(attributeKey, attributeValue);
       });
@@ -137,6 +156,7 @@ var globalComponent = {
       document.head.appendChild(tagElement);
     });
 
+    // Capitalize first letter and output the message to the console
     console.info(
       `${name.charAt(0).toUpperCase() + name.slice(1)} have been loaded.`
     );

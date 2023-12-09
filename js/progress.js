@@ -24,13 +24,16 @@ globalComponent.addComponent({
   },
 
   createProgressElement: function (value, max) {
+    // Calculate percentage of the current progress value
     const donePercent = Math.round((value / max) * 100);
+
     const progressText = document.createElement("span");
     progressText.classList.add("mx-2", "my-1");
     progressText.appendChild(
       document.createTextNode(`${donePercent}% (${value}/${max})`)
     );
 
+    // Create a progress HTML element
     let progressElement = document.createElement("div");
     progressElement.classList.add("progress-bar", "bg-warning", "text-dark");
     progressElement.setAttribute("aria-valuemin", "0");
