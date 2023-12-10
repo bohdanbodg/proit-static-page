@@ -9,6 +9,7 @@ var globalComponent = {
   name: "init",
 
   pageTitle: "ProIT Static Page",
+  pageOriginalTitle: null,
 
   styles: [
     {
@@ -20,7 +21,16 @@ var globalComponent = {
       },
     },
   ],
-  scripts: [],
+  scripts: [
+    {
+      src: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js",
+      attributes: {
+        integrity:
+          "sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL",
+        crossorigin: "anonymous",
+      },
+    },
+  ],
   components: {},
 
   init: function () {
@@ -34,11 +44,13 @@ var globalComponent = {
   },
 
   initPageTitle: function () {
-    if (document.title.includes(this.pageTitle)) {
+    const title = document.title;
+    if (title.includes(this.pageTitle)) {
       return;
     }
 
-    document.title = `${document.title} - ${this.pageTitle}` + " (DEV)"; // TODO: Remove dev indicator before release deploy
+    document.title =
+      `${(this.pageOriginalTitle = title)} - ${this.pageTitle}` + " (DEV)"; // TODO: Remove dev indicator before release deploy
   },
 
   getComponentPath: function (component) {
