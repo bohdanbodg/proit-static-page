@@ -127,7 +127,9 @@ var components = {
    * @param {string} name
    */
   invokeCallback: function (type, name) {
-    this.vault.callbacks[type][name]();
+    if (type in this.vault.callbacks && name in this.vault.callbacks[type]) {
+      this.vault.callbacks[type][name]();
+    }
   },
 };
 
