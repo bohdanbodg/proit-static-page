@@ -14,7 +14,7 @@ components.add({
     },
 
     getUrl: function (type, filename) {
-      return `/${type}/lib/${filename}`;
+      return `${type}/lib/${filename}`;
     },
   },
 });

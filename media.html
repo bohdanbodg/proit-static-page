@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media</title>
+    <script src="js/main.js" components="homepage-link"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-3">Video</h1>
+      <video
+        src="media/video/138891.mp4"
+        controls
+        width="640"
+        height="480"
+        poster="img/generated-001x.png"
+      >
+        <source src="media/video/138891.webm" type="video/webm" />
+        <source src="media/video/138891.avi" type="video/x-msvideo" />
+        <track
+          src="media/video/subtitles/138891.eng.vtt"
+          kind="subtitles"
+          srclang="en-us"
+          label="English"
+          default
+        />
+        <track
+          src="media/video/subtitles/138891.ukr.vtt"
+          kind="subtitles"
+          srclang="uk"
+          label="Ukrainian"
+        />
+        Your browser does not support the video element.
+      </video>
+    </div>
+  </body>
+</html>

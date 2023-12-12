@@ -213,6 +213,13 @@ components.add({
 
       return tagElement;
     },
+
+    /**
+     * @return {string}
+     */
+    getCurrentHTML: function () {
+      return window.location.pathname.split("/").pop();
+    },
   },
   private: {
     public: null,
@@ -252,9 +259,9 @@ components.add({
       this.public.addScript({
         src: components.getPath(componentName),
         onload: function () {
-          components.invokeCallback(initCallbackName, componentName);
-
           self.loadDependencies(componentName);
+
+          components.invokeCallback(initCallbackName, componentName);
         },
       });
     },
