@@ -1,6 +1,6 @@
 components.add({
   name: "semantic",
-  dependencies: ["bootstrap"],
+  dependencies: ["bootstrap", "page-title"],
   private: {
     init: function () {
       this.initMain();
@@ -9,12 +9,17 @@ components.add({
     },
 
     initHeader: function () {
+      const pageTitle = components.get("page-title");
+
       document.body.insertAdjacentHTML(
         "afterbegin",
         `<header class="sticky-top shadow-sm">
-            <nav class="nav nav-underline bg-body-tertiary px-3">
-                <a class="nav-link" href="/index.html">Home</a>
-            </nav>
+          <nav class="nav nav-underline bg-body-tertiary px-2">
+            <a class="navbar-brand align-self-center h1 mb-0 mx-1 fs-4" href="#">
+              ${pageTitle.shortTitle}
+            </a>
+            <a class="nav-link" href="/index.html">Home</a>
+          </nav>
         </header>`
       );
     },

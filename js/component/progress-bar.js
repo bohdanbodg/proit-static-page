@@ -29,7 +29,7 @@ components.add({
       // Calculate percentage of the current progress value
       const donePercent = Math.round((value / max) * 100);
 
-      return `<div class="progress-bar bg-warning text-dark"
+      return `<div class="progress-bar progress-bar-striped bg-warning text-dark"
                          aria-valuemin="0"
                          aria-valuenow="${value}"
                          aria-valuemax="${max}"

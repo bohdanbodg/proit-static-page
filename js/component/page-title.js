@@ -2,6 +2,7 @@ components.add({
   name: "page-title",
   public: {
     title: "ProIT Static Page",
+    shortTitle: "ProIT SP",
     originalTitle: document.title,
   },
   private: {
