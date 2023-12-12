@@ -72,7 +72,7 @@ var components = {
 
     const private = entity.private ?? null;
     if (private !== null) {
-      this.addCallback(initCallbackName, name, function () {
+      this.addCallback(initCallbackName, name, () => {
         private.init({
           name: name,
           public: public,
@@ -97,7 +97,6 @@ var components = {
   },
 
   /**
-   *
    * @param {string} type
    * @return {Object}
    */
@@ -137,7 +136,7 @@ var components = {
 
 components.add({
   name: mainComponentName,
-  dependencies: ["page-title", "bootstrap"],
+  dependencies: ["page-title", "bootstrap", "semantic"],
   public: {
     /**
      * @param {Object} data
@@ -177,15 +176,6 @@ components.add({
     },
 
     /**
-     * @param {HTMLElement} element
-     * @param {HTMLElement} container
-     */
-    prependElementToContainer: function (element, container) {
-      container.insertBefore(element, container.firstChild);
-    },
-
-    /**
-     *
      * @param {string} tag
      * @param {Object} data
      * @param {Object} attributes
@@ -196,15 +186,13 @@ components.add({
       let tagElement = document.createElement(tag);
 
       if (data.olength() > 0) {
-        data.oforEach(function (value, key) {
-          tagElement[key] = value;
-        });
+        data.oforEach((value, key) => (tagElement[key] = value));
       }
 
       if (attributes.olength() > 0) {
-        attributes.oforEach(function (value, key) {
-          tagElement.setAttribute(key, value);
-        });
+        attributes.oforEach((value, key) =>
+          tagElement.setAttribute(key, value)
+        );
       }
 
       if (classes.length > 0) {
@@ -223,9 +211,12 @@ components.add({
   },
   private: {
     public: null,
+    excludedComponents: [],
 
     init: function (data) {
       this.public = data.public;
+
+      this.excludedComponents = this.readComponents("excluded");
 
       this.loadDependencies(data.name);
       this.loadComponents(this.readComponents("components"));
@@ -238,19 +229,21 @@ components.add({
       }
 
       const self = this;
-      dependencies.forEach(function (dependency) {
-        self.loadComponent(dependency);
-      });
+      dependencies.forEach((dependency) => self.loadComponent(dependency));
     },
 
     loadComponents: function (componentNames) {
       const self = this;
-      componentNames.forEach(function (componentName) {
-        self.loadComponent(componentName);
-      });
+      componentNames.forEach((componentName) =>
+        self.loadComponent(componentName)
+      );
     },
 
     loadComponent: function (componentName) {
+      if (this.excludedComponents.includes(componentName)) {
+        return;
+      }
+
       if (components.has(componentName)) {
         return;
       }
@@ -258,7 +251,7 @@ components.add({
       const self = this;
       this.public.addScript({
         src: components.getPath(componentName),
-        onload: function () {
+        onload: () => {
           self.loadDependencies(componentName);
 
           components.invokeCallback(initCallbackName, componentName);

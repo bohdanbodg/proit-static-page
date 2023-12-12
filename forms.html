@@ -4,140 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forms</title>
-    <script src="js/main.js" components="homepage-link"></script>
+    <script src="js/main.js"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Forms</h1>
-      <h2 id="contact-us">Contact Us</h2>
-      <form action="/form/contact" method="POST" class="mb-4">
-        <div class="mb-2">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="example@domain.com"
-            class="form-control"
-            required
-          />
-        </div>
-        <div class="mb-2">
-          <label for="comment">Comment</label>
-          <textarea
-            id="comment"
-            name="comment"
-            rows="2"
-            placeholder="Enter you comment..."
-            class="form-control"
-            required
-          ></textarea>
-        </div>
-        <button type="submit" class="btn btn-dark px-4" autofocus>Send</button>
-      </form>
-      <h2 id="share-info">Share Information</h2>
-      <form action="/form/info" method="POST" class="mb-4">
-        <div class="mb-2">
-          <label for="name">Name</label>
-          <input
-            type="name"
-            id="name"
-            name="name"
-            class="form-control"
-            required
-          />
-        </div>
-        <div class="mb-2">
-          <label for="gender">Gender</label>
-          <div id="gender">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gender"
-                id="gender-male"
-                value="male"
-                checked
-              />
-              <label class="form-check-label" for="gender-male">Male</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gender"
-                id="gender-female"
-                value="female"
-              />
-              <label class="form-check-label" for="gender-female">Female</label>
-            </div>
+    <h1>Forms</h1>
+    <h2 id="contact-us">Contact Us</h2>
+    <form action="/form/contact" method="POST" class="mb-4">
+      <div class="mb-2">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@domain.com"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label for="comment">Comment</label>
+        <textarea
+          id="comment"
+          name="comment"
+          rows="2"
+          placeholder="Enter you comment..."
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-dark px-4" autofocus>Send</button>
+    </form>
+    <h2 id="share-info">Share Information</h2>
+    <form action="/form/info" method="POST" class="mb-4">
+      <div class="mb-2">
+        <label for="name">Name</label>
+        <input
+          type="name"
+          id="name"
+          name="name"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <label for="gender">Gender</label>
+        <div id="gender">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="gender-male"
+              value="male"
+              checked
+            />
+            <label class="form-check-label" for="gender-male">Male</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="gender-female"
+              value="female"
+            />
+            <label class="form-check-label" for="gender-female">Female</label>
           </div>
         </div>
-        <div class="mb-2">
-          <label for="hobby">Hobbies</label>
-          <div id="hobby">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="hobbies[]"
-                value="chess"
-                id="hobby-chess"
-              />
-              <label class="form-check-label" for="hobby-chess">
-                Play chess
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="hobbies[]"
-                value="piano"
-                id="hobby-piano"
-              />
-              <label class="form-check-label" for="hobby-piano">
-                Play piano
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="hobbies[]"
-                value="books"
-                id="hobby-books"
-              />
-              <label class="form-check-label" for="hobby-books">
-                Read books
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="hobbies[]"
-                value="bicycle"
-                id="hobby-bicycle"
-              />
-              <label class="form-check-label" for="hobby-bicycle">
-                Ride bicycle
-              </label>
-            </div>
+      </div>
+      <div class="mb-2">
+        <label for="hobby">Hobbies</label>
+        <div id="hobby">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="hobbies[]"
+              value="chess"
+              id="hobby-chess"
+            />
+            <label class="form-check-label" for="hobby-chess">
+              Play chess
+            </label>
           </div>
-          <textarea
-            id="custom-hobbies"
-            name="custom-hobbies"
-            rows="1"
-            placeholder="Custom..."
-            class="form-control"
-          ></textarea>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="hobbies[]"
+              value="piano"
+              id="hobby-piano"
+            />
+            <label class="form-check-label" for="hobby-piano">
+              Play piano
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="hobbies[]"
+              value="books"
+              id="hobby-books"
+            />
+            <label class="form-check-label" for="hobby-books">
+              Read books
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="hobbies[]"
+              value="bicycle"
+              id="hobby-bicycle"
+            />
+            <label class="form-check-label" for="hobby-bicycle">
+              Ride bicycle
+            </label>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary px-4">Send</button>
-        <button type="reset" class="btn btn-warning px-4" disabled>
-          Reset (unavailable)
-        </button>
-      </form>
-    </div>
+        <textarea
+          id="custom-hobbies"
+          name="custom-hobbies"
+          rows="2"
+          placeholder="Custom..."
+          class="form-control"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary px-4">Send</button>
+      <button type="reset" class="btn btn-warning px-4" disabled>
+        Reset (unavailable)
+      </button>
+    </form>
   </body>
 </html>

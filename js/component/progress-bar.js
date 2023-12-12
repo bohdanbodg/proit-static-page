@@ -1,5 +1,6 @@
 components.add({
   name: "progress-bar",
+  dependencies: ["bootstrap"],
   private: {
     init: function () {
       let progressContainers = document.querySelectorAll("div.progress");
@@ -8,7 +9,7 @@ components.add({
       }
 
       const self = this;
-      progressContainers.forEach(function (container) {
+      progressContainers.forEach((container) => {
         let value = container.getAttribute("value"),
           max = container.getAttribute("max");
         if (value === null || max === null) {
@@ -17,39 +18,25 @@ components.add({
 
         container.classList.add("h-auto", "w-auto", "mb-2");
 
-        container.appendChild(self.createProgressBarElement(value, max));
+        container.insertAdjacentHTML(
+          "beforeend",
+          self.getProgressBarElementHTML(value, max)
+        );
       });
     },
 
-    createProgressBarElement: function (value, max) {
+    getProgressBarElementHTML: function (value, max) {
       // Calculate percentage of the current progress value
       const donePercent = Math.round((value / max) * 100);
 
-      let progressElement = mainComponent.createTag(
-        "div",
-        {},
-        {
-          "aria-valuemin": "0",
-          "aria-valuenow": value,
-          "aria-valuemax": max,
-          role: "progressbar",
-          style: `width: ${donePercent}%`,
-        },
-        ["progress-bar", "bg-warning", "text-dark"]
-      );
-
-      progressElement.appendChild(
-        mainComponent.createTag(
-          "span",
-          {
-            innerHTML: `${donePercent}% (${value}/${max})`,
-          },
-          {},
-          ["mx-2", "my-1"]
-        )
-      );
-
-      return progressElement;
+      return `<div class="progress-bar bg-warning text-dark"
+                         aria-valuemin="0"
+                         aria-valuenow="${value}"
+                         aria-valuemax="${max}"
+                         role="progressbar"
+                         style="width: ${donePercent}%">
+                <span class="mx-2 my-1">${donePercent}% (${value}/${max})</span>
+              </div>`;
     },
   },
 });
