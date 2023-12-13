@@ -13,12 +13,12 @@ components.add({
 
       document.body.insertAdjacentHTML(
         "afterbegin",
-        `<header class="sticky-top shadow-sm">
-          <nav class="nav nav-underline bg-body-tertiary px-2">
+        `<header class="sticky-top">
+          <nav class="nav nav-underline bg-primary text-light px-2 shadow">
             <a class="navbar-brand align-self-center h1 mb-0 mx-1 fs-4" href="#">
               ${pageTitle.shortTitle}
             </a>
-            <a class="nav-link" href="/index.html">Home</a>
+            <a class="nav-link link-light" href="/index.html">Home</a>
           </nav>
         </header>`
       );
@@ -31,7 +31,7 @@ components.add({
         {
           style: "min-height: 90vh",
         },
-        ["container", "mx-1", "my-3"]
+        ["container", "my-3"]
       );
 
       main.innerHTML = document.body.innerHTML;
@@ -44,7 +44,7 @@ components.add({
       document.body.insertAdjacentHTML(
         "beforeend",
         `<footer>
-            <nav class="nav bg-body-tertiary">
+            <nav class="nav bg-body-tertiary border-top">
                 <a class="nav-link link-secondary" href="/forms.html#contact-us">
                     Contact Us
                 </a>
