@@ -6,13 +6,17 @@ components.add({
     originalTitle: document.title,
   },
   private: {
-    init: function (data) {
-      if (data.public.originalTitle.includes(data.public.title)) {
+    init: function () {
+      if (this.public.originalTitle.includes(this.public.title)) {
         return;
       }
 
-      document.title = `${data.public.originalTitle} - ${data.public.title}`;
+      const args = { component: this.public };
+
+      components.invokeCallbacks("page-title.set", "before", args);
+      document.title = `${this.public.originalTitle} - ${this.public.title}`;
       document.title += " (DEV)"; // TODO: Remove dev indicator before release deploy
+      components.invokeCallbacks("page-title.set", "after", args);
     },
   },
 });

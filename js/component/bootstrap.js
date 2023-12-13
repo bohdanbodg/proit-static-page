@@ -5,12 +5,19 @@ components.add({
   },
   private: {
     init: function () {
-      mainComponent.addStyle({
+      const args = { component: this.public };
+
+      components.invokeCallbacks("bootstrap.style.add", "before", args);
+      this.base.addStyle({
         href: this.getUrl("css", "bootstrap.min.css"),
       });
-      mainComponent.addScript({
+      components.invokeCallbacks("bootstrap.style.add", "after", args);
+
+      components.invokeCallbacks("bootstrap.script.add", "before", args);
+      this.base.addScript({
         src: this.getUrl("js", "bootstrap.bundle.min.js"),
       });
+      components.invokeCallbacks("bootstrap.script.add", "after", args);
     },
 
     getUrl: function (type, filename) {

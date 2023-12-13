@@ -1,6 +1,6 @@
 components.add({
   name: "semantic",
-  dependencies: ["bootstrap", "page-title"],
+  deps: ["bootstrap", "page-title"],
   private: {
     init: function () {
       this.initMain();
@@ -25,7 +25,7 @@ components.add({
     },
 
     initMain: function () {
-      const main = mainComponent.createTag(
+      const main = this.base.createTag(
         "main",
         {},
         {

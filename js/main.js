@@ -14,13 +14,10 @@ var cl = console.log;
 
 // === Implementing component system ===
 
-var mainComponentName = "main";
-var initCallbackName = "init";
-
 var components = {
+  base: { name: "base" },
   vault: {
     entities: {},
-    dependencies: {},
     callbacks: {},
   },
 
@@ -65,114 +62,130 @@ var components = {
       return;
     }
 
-    this.vault.dependencies[name] = entity.dependencies ?? [];
+    entity.deps = entity.deps ?? [];
 
-    const public = entity.public ?? {};
-    this.vault.entities[name] = public;
+    entity.public = entity.public ?? {};
+    entity.public.name = name;
+    entity.public.deps = entity.deps;
+    entity.public.base = this.base;
+    this.vault.entities[name] = entity.public;
 
-    const private = entity.private ?? null;
-    if (private !== null) {
-      this.addCallback(initCallbackName, name, () => {
-        private.init({
-          name: name,
-          public: public,
-          deps: components.getDependencies(name),
-        });
-
-        delete components.vault.callbacks[initCallbackName][name];
-      });
-
-      if (name === mainComponentName) {
-        this.invokeCallback(initCallbackName, name);
-      }
+    if (name === this.base.name) {
+      Object.assign(this.base, entity.public);
     }
+
+    entity.private = entity.private ?? {};
+    entity.private.name = name;
+    entity.private.deps = entity.deps;
+    entity.private.base = this.base;
+    entity.private.public = entity.public;
+
+    const originalInit = entity.private.init ?? null;
+    entity.private.init = function () {
+      const args = { component: this.public };
+
+      components.invokeCallbacks("component.deps.load", "before", args);
+      this.base.loadDependencies(name);
+      components.invokeCallbacks("component.deps.load", "after", args);
+
+      if (originalInit !== null) {
+        components.invokeCallbacks("component.init", "before", args);
+        originalInit.call(this);
+        components.invokeCallbacks("component.init", "after", args);
+      }
+    };
+
+    entity.private.init();
   },
 
   /**
    * @param {string} name
-   * @return {Array}
+   * @param {string} hookType
+   * @return {boolean}
    */
-  getDependencies: function (name) {
-    return this.vault.dependencies[name] ?? [];
+  hasAnyCallback: function (name, hookType) {
+    return (
+      name in this.vault.callbacks &&
+      hookType in this.vault.callbacks[name] &&
+      Array.isArray(this.vault.callbacks[name][hookType]) &&
+      this.vault.callbacks[name][hookType].length > 0
+    );
   },
 
   /**
-   * @param {string} type
-   * @return {Object}
-   */
-  getCallbacks: function (type) {
-    return this.vault.callbacks[type] ?? {};
-  },
-
-  /**
-   * @param {string} type
    * @param {string} name
+   * @param {string} hookType
    * @param {Function} callback
    */
-  addCallback: function (type, name, callback) {
-    if (typeof this.vault.callbacks[type] === "undefined") {
-      this.vault.callbacks[type] = {};
-    }
-
-    if (name in this.vault.callbacks[type]) {
+  addCallback: function (name, hookType, callback) {
+    if (!["before", "after"].includes(hookType)) {
       return;
     }
 
-    this.vault.callbacks[type][name] = callback;
+    if (!(name in this.vault.callbacks)) {
+      this.vault.callbacks[name] = {};
+    }
+
+    if (
+      !(hookType in this.vault.callbacks[name]) ||
+      !Array.isArray(this.vault.callbacks[name][hookType])
+    ) {
+      this.vault.callbacks[name][hookType] = [];
+    }
+
+    this.vault.callbacks[name][hookType].push(callback);
   },
 
   /**
-   * @param {string} type
    * @param {string} name
+   * @param {string} hookType
+   * @param {Object} args
    */
-  invokeCallback: function (type, name) {
-    if (type in this.vault.callbacks && name in this.vault.callbacks[type]) {
-      this.vault.callbacks[type][name]();
+  invokeCallbacks: function (name, hookType, args = {}) {
+    if (this.hasAnyCallback(name, hookType)) {
+      this.vault.callbacks[name][hookType].forEach((callback) =>
+        callback.call(null, args)
+      );
     }
   },
 };
 
-// === Adding the main component ===
+// === Adding base component ===
 
 components.add({
-  name: mainComponentName,
-  dependencies: ["page-title", "bootstrap", "semantic"],
+  name: components.base.name,
+  deps: ["bootstrap", "page-title", "semantic"],
   public: {
     /**
      * @param {Object} data
      * @param {Object} attributes
+     * @return {HTMLElement}
      */
     addStyle: function (data, attributes = {}) {
-      this.appendTagToHead(
-        "link",
-        data,
-        Object.assign(attributes, {
-          rel: "stylesheet",
-        })
-      );
+      attributes.rel = "stylesheet";
+
+      return this.appendTagToHead("link", data, attributes);
     },
 
     /**
      * @param {Object} data
      * @param {Object} attributes
+     * @return {HTMLElement}
      */
     addScript: function (data, attributes = {}) {
-      this.appendTagToHead(
-        "script",
-        data,
-        Object.assign(attributes, {
-          type: "text/javascript",
-        })
-      );
+      attributes.type = "text/javascript";
+
+      return this.appendTagToHead("script", data, attributes);
     },
 
     /**
      * @param {string} tag
      * @param {Object} data
      * @param {Object} attributes
+     * @return {HTMLElement}
      */
     appendTagToHead: function (tag, data, attributes = {}) {
-      document.head.appendChild(this.createTag(tag, data, attributes));
+      return document.head.appendChild(this.createTag(tag, data, attributes));
     },
 
     /**
@@ -208,55 +221,43 @@ components.add({
     getCurrentHTML: function () {
       return window.location.pathname.split("/").pop();
     },
+
+    /**
+     * @param {string} componentName
+     */
+    loadDependencies: function (componentName) {
+      const component = components.get(componentName);
+      if (component === null || component.deps.length === 0) {
+        return;
+      }
+
+      const self = this;
+      component.deps.forEach((dependency) => self.loadComponent(dependency));
+    },
+
+    /**
+     * @param {string} name
+     */
+    loadComponent: function (name) {
+      if (components.has(name)) {
+        return;
+      }
+
+      this.addScript({
+        src: components.getPath(name),
+        async: false,
+        defer: true,
+      });
+    },
   },
   private: {
-    public: null,
-    excludedComponents: [],
-
-    init: function (data) {
-      this.public = data.public;
-
-      this.excludedComponents = this.readComponents("excluded");
-
-      this.loadDependencies(data.name);
+    init: function () {
       this.loadComponents(this.readComponents("components"));
     },
 
-    loadDependencies: function (componentName) {
-      const dependencies = components.getDependencies(componentName);
-      if (dependencies.length === 0) {
-        return;
-      }
-
-      const self = this;
-      dependencies.forEach((dependency) => self.loadComponent(dependency));
-    },
-
-    loadComponents: function (componentNames) {
-      const self = this;
-      componentNames.forEach((componentName) =>
-        self.loadComponent(componentName)
-      );
-    },
-
-    loadComponent: function (componentName) {
-      if (this.excludedComponents.includes(componentName)) {
-        return;
-      }
-
-      if (components.has(componentName)) {
-        return;
-      }
-
-      const self = this;
-      this.public.addScript({
-        src: components.getPath(componentName),
-        onload: () => {
-          self.loadDependencies(componentName);
-
-          components.invokeCallback(initCallbackName, componentName);
-        },
-      });
+    loadComponents: function (names) {
+      const public = this.public;
+      names.forEach((name) => public.loadComponent(name));
     },
 
     readComponents: function (attributeName, separator = ";") {
@@ -265,14 +266,12 @@ components.add({
         return [];
       }
 
-      const componentNames = script.getAttribute(attributeName);
-      if (componentNames === null) {
+      const names = script.getAttribute(attributeName);
+      if (names === null) {
         return [];
       }
 
-      return componentNames.split(separator);
+      return names.split(separator);
     },
   },
 });
-
-var mainComponent = components.get(mainComponentName);
