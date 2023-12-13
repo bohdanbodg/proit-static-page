@@ -16,7 +16,14 @@ components.add({
           return;
         }
 
-        container.classList.add("h-auto", "w-auto", "mb-2");
+        container.classList.add(
+          "h-auto",
+          "w-auto",
+          "mb-2",
+          "border",
+          "border-warning",
+          "shadow-sm"
+        );
 
         const args = {
           component: this.public,

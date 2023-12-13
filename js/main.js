@@ -154,7 +154,7 @@ var components = {
 
 components.add({
   name: components.base.name,
-  deps: ["bootstrap", "page-title", "semantic"],
+  deps: ["bootstrap", "styles", "page-title", "semantic"],
   public: {
     /**
      * @param {Object} data
