@@ -85,12 +85,32 @@ var components = {
       const args = { component: this.public };
 
       components.invokeCallbacks("component.deps.load", "before", args);
-      this.base.loadDependencies(name);
+      components.invokeCallbacks(
+        `component.${this.name}.deps.load`,
+        "before",
+        args
+      );
+      this.base.loadDependencies(this.name);
+      components.invokeCallbacks(
+        `component.${this.name}.deps.load`,
+        "after",
+        args
+      );
       components.invokeCallbacks("component.deps.load", "after", args);
 
       if (originalInit !== null) {
         components.invokeCallbacks("component.init", "before", args);
+        components.invokeCallbacks(
+          `component.${this.name}.init`,
+          "before",
+          args
+        );
         originalInit.call(this);
+        components.invokeCallbacks(
+          `component.${this.name}.init`,
+          "after",
+          args
+        );
         components.invokeCallbacks("component.init", "after", args);
       }
     };
@@ -154,25 +174,29 @@ var components = {
 
 components.add({
   name: components.base.name,
-  deps: ["bootstrap", "styles", "page-title", "semantic"],
+  deps: ["base/bootstrap", "base/styles", "page-title", "semantic"],
   public: {
     /**
+     * @param {string} url
      * @param {Object} data
      * @param {Object} attributes
      * @return {HTMLElement}
      */
-    addStyle: function (data, attributes = {}) {
+    addStyle: function (url, data = {}, attributes = {}) {
+      data.href = url;
       attributes.rel = "stylesheet";
 
       return this.appendTagToHead("link", data, attributes);
     },
 
     /**
+     * @param {string} url
      * @param {Object} data
      * @param {Object} attributes
      * @return {HTMLElement}
      */
-    addScript: function (data, attributes = {}) {
+    addScript: function (url, data = {}, attributes = {}) {
+      data.src = url;
       attributes.type = "text/javascript";
 
       return this.appendTagToHead("script", data, attributes);
@@ -192,7 +216,7 @@ components.add({
      * @param {string} tag
      * @param {Object} data
      * @param {Object} attributes
-     * @param {Array} classes
+     * @param {Array|string} classes
      * @return {HTMLElement}
      */
     createTag: function (tag, data = {}, attributes = {}, classes = []) {
@@ -209,6 +233,10 @@ components.add({
       }
 
       if (classes.length > 0) {
+        if (typeof classes === "string") {
+          classes = classes.split(" ");
+        }
+
         tagElement.classList.add(...classes);
       }
 
@@ -243,8 +271,7 @@ components.add({
         return;
       }
 
-      this.addScript({
-        src: components.getPath(name),
+      this.addScript(components.getPath(name), {
         async: false,
         defer: true,
       });

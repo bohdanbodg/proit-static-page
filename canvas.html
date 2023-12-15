@@ -4,91 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canvas</title>
-    <script src="js/main.js"></script>
-    <script>
-      var penColor = "#AAAAAA";
-      var penSize = 20;
-
-      function drawCanvas(canvas, event) {
-        if (event.buttons !== 1) {
-          return;
-        }
-
-        const x = event.offsetX,
-          y = event.offsetY;
-
-        const context = canvas.getContext("2d");
-
-        context.beginPath();
-        context.arc(x, y, penSize, 0, Math.PI * 2);
-        context.strokeStyle = penColor;
-        context.stroke();
-      }
-
-      function updatePenColor(input) {
-        penColor = input.value;
-      }
-
-      function updatePenSize(input) {
-        penSize = parseInt(input.value);
-      }
-
-      function resetCanvas() {
-        const canvas = document.querySelector("#canvas");
-        canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-      }
-
-      window.addEventListener("load", function () {
-        updatePenSize(document.querySelector("#canvas-pen-size"));
-        updatePenColor(document.querySelector("#canvas-pen-color"));
-      });
-    </script>
+    <script src="js/main.js" components="canvas"></script>
   </head>
   <body>
     <h1>Canvas</h1>
-    <div class="container">
-      <div class="row mt-3">
-        <div class="col-auto">
-          <input
-            id="canvas-pen-size"
-            type="range"
-            class="form-range mt-1"
-            min="10"
-            max="100"
-            step="5"
-            value="20"
-            onchange="updatePenSize(this)"
-            title="10-100"
-          />
-        </div>
-        <div class="col-auto">
-          <input
-            class="mt-1"
-            id="canvas-pen-color"
-            type="color"
-            value="#AAAAAA"
-            onchange="updatePenColor(this)"
-          />
-        </div>
-
-        <div class="col-auto">
-          <button
-            type="button"
-            class="btn btn-secondary btn-sm mb-1"
-            onclick="resetCanvas()"
-          >
-            Reset
-          </button>
-        </div>
+    <div class="row mt-3">
+      <div class="col-auto">
+        <input
+          id="canvas-pen-size"
+          type="range"
+          class="form-range mt-1"
+          min="5"
+          max="100"
+          step="5"
+          title="10-100"
+        />
       </div>
-      <canvas
-        id="canvas"
-        class="border"
-        width="580"
-        height="480"
-        onmousedown="drawCanvas(this, event)"
-        onmousemove="drawCanvas(this, event)"
-      ></canvas>
+      <div class="col-auto">
+        <input class="mt-1" id="canvas-pen-color" type="color" />
+      </div>
+      <div class="col-auto">
+        <button
+          id="canvas-reset"
+          type="button"
+          class="btn btn-secondary btn-sm mb-1"
+        >
+          Reset
+        </button>
+      </div>
     </div>
+    <canvas id="canvas" class="border w-100" width="580" height="480">
+      Your browser does not support the canvas element.
+    </canvas>
   </body>
 </html>

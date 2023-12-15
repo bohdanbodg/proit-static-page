@@ -1,6 +1,6 @@
 components.add({
   name: "semantic",
-  deps: ["bootstrap", "page-title"],
+  deps: ["page-title"],
   public: {
     copyright: "2023 Bohdan",
   },
@@ -40,7 +40,7 @@ components.add({
         {
           style: "min-height: 90vh",
         },
-        ["container", "mt-3", "mb-5"]
+        ["container", "mt-4", "mb-5"]
       );
 
       main.innerHTML = document.body.innerHTML;

@@ -1,6 +1,5 @@
 components.add({
   name: "progress-bar",
-  deps: ["bootstrap"],
   private: {
     init: function () {
       let progressContainers = document.querySelectorAll("div.progress");
@@ -35,7 +34,7 @@ components.add({
         components.invokeCallbacks("progress-bar.append", "before", args);
         container.insertAdjacentHTML(
           "beforeend",
-          self.getProgressBarElementHTML(value, max)
+          self.getProgressBarElementHTML(args.value, args.max)
         );
         components.invokeCallbacks("progress-bar.append", "after", args);
       });

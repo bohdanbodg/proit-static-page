@@ -1,5 +1,5 @@
 components.add({
-  name: "bootstrap",
+  name: "base/bootstrap",
   public: {
     version: "5.3.2",
   },
@@ -8,15 +8,11 @@ components.add({
       const args = { component: this.public };
 
       components.invokeCallbacks("bootstrap.style.add", "before", args);
-      this.base.addStyle({
-        href: this.getUrl("css", "bootstrap.min.css"),
-      });
+      this.base.addStyle(this.getUrl("css", "bootstrap.min.css"));
       components.invokeCallbacks("bootstrap.style.add", "after", args);
 
       components.invokeCallbacks("bootstrap.script.add", "before", args);
-      this.base.addScript({
-        src: this.getUrl("js", "bootstrap.bundle.min.js"),
-      });
+      this.base.addScript(this.getUrl("js", "bootstrap.bundle.min.js"));
       components.invokeCallbacks("bootstrap.script.add", "after", args);
     },
 
