@@ -80,16 +80,28 @@ components.add({
 
       this.addControlCallbacks(
         "size",
-        (element) => (element.value = public.penSize.toString()),
+        (element) => {
+          element.value = public.penSize.toString();
+          element.title = public.penSize.toString();
+        },
         "change",
-        (element) => (public.penSize = parseInt(element.value))
+        (element) => {
+          public.penSize = parseInt(element.value);
+          element.title = public.penSize.toString();
+        }
       );
 
       this.addControlCallbacks(
         "color",
-        (element) => (element.value = public.penColor),
+        (element) => {
+          element.value = public.penColor;
+          element.title = public.penColor;
+        },
         "change",
-        (element) => (public.penColor = element.value)
+        (element) => {
+          public.penColor = element.value;
+          element.title = public.penColor;
+        }
       );
 
       this.addControlCallbacks("reset", null, "click", () =>

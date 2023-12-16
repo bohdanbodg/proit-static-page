@@ -8,30 +8,20 @@
   </head>
   <body>
     <h1>Canvas</h1>
-    <div class="row mt-3">
-      <div class="col-auto">
-        <input
-          id="canvas-pen-size"
-          type="range"
-          class="form-range mt-1"
-          min="5"
-          max="100"
-          step="5"
-          title="10-100"
-        />
-      </div>
-      <div class="col-auto">
-        <input class="mt-1" id="canvas-pen-color" type="color" />
-      </div>
-      <div class="col-auto">
-        <button
-          id="canvas-reset"
-          type="button"
-          class="btn btn-secondary btn-sm mb-1"
-        >
-          Reset
-        </button>
-      </div>
+    <div class="hstack gap-3 mt-3 mb-1">
+      <input
+        class="form-range"
+        id="canvas-pen-size"
+        type="range"
+        min="5"
+        max="100"
+        step="5"
+      />
+      <input class="form-control w-25 p-0" id="canvas-pen-color" type="color" />
+      <div class="vr"></div>
+      <button id="canvas-reset" type="button" class="btn btn-outline-danger">
+        Reset
+      </button>
     </div>
     <canvas id="canvas" class="border w-100" width="580" height="480">
       Your browser does not support the canvas element.
