@@ -49,8 +49,8 @@ components.add({
                          aria-valuenow="${value}"
                          aria-valuemax="${max}"
                          role="progressbar"
-                         style="width: ${donePercent}%">
-                <span class="mx-2 my-1">${donePercent}% (${value}/${max})</span>
+                         style="width: ${donePercent}%; height: 1.5rem">
+                <span class="position-absolute mx-2 my-1">${donePercent}% (${value}/${max})</span>
               </div>`;
     },
   },

@@ -30,3 +30,7 @@ table.table tr:last-child th,
 table.table tr:last-child td {
   border-bottom: 0;
 }
+
+.color-tomato {
+  color: tomato;
+}
