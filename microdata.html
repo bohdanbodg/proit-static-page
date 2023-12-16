@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microdata</title>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <h1>Microdata</h1>
+    <div class="card mw-100 mt-4" style="width: 46rem">
+      <div class="card-header">Movie</div>
+      <div class="card-body" itemscope itemtype="https://schema.org/Movie">
+        <h4 class="card-title h2 mb-2" itemprop="name">
+          Mission: Impossible - Dead Reckoning Part One
+        </h4>
+        <div class="container-fluid p-0">
+          <meta itemprop="dateCreated" content="2023-06-19" />
+          <meta
+            itemprop="image"
+            content="https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/S/pv-target-images/314c028e3fc572db40f6c79a9e21980e45700b205dcedbcbffd76c38f6c5bdae.jpg"
+          />
+          <table class="table">
+            <tbody>
+              <tr
+                itemprop="director"
+                itemscope
+                itemtype="https://schema.org/Person"
+              >
+                <th scope="row">Director</th>
+                <td itemprop="name">Christopher McQuarrie</td>
+              </tr>
+              <tr>
+                <th scope="row">Genre</th>
+                <td itemprop="genre">Action</td>
+              </tr>
+
+              <tr>
+                <th scope="row">Content Rating</th>
+                <td itemprop="contentRating">PG-13</td>
+              </tr>
+              <tr>
+                <th scope="row">Description</th>
+                <td itemprop="description">
+                  Ethan Hunt and his IMF team must track down a dangerous weapon
+                  before it falls into the wrong hands.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
