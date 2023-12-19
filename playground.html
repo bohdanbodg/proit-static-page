@@ -9,9 +9,20 @@
       .color-yellowgreen {
         color: yellowgreen;
       }
+
       .highlight {
         color: green;
         font-weight: bold;
+      }
+
+      div.class a.link[href="#"] > span + b {
+        color: red;
+      }
+
+      div.class a.link[href="#"] {
+        text-decoration: none;
+        border: dashed cornflowerblue;
+        padding: 4px;
       }
     </style>
   </head>
@@ -23,5 +34,15 @@
     <p class="color-tomato">Paragraph 3.</p>
     <div class="highlight">Some highlighted text here.</div>
     <p class="highlight">Highlighted paragraph.</p>
+    <h2>Selectors</h2>
+    <div class="class">
+      <div class="container">
+        <a class="link" href="#">
+          <span>Some</span>
+          <b>link</b>
+          <b>:)</b>
+        </a>
+      </div>
+    </div>
   </body>
 </html>
