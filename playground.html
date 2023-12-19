@@ -24,6 +24,15 @@
         border: dashed cornflowerblue;
         padding: 4px;
       }
+
+      div.special-div {
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        margin: 20px;
+        border: 5px solid black;
+      }
     </style>
   </head>
   <body>
@@ -34,7 +43,7 @@
     <p class="color-tomato">Paragraph 3.</p>
     <div class="highlight">Some highlighted text here.</div>
     <p class="highlight">Highlighted paragraph.</p>
-    <h2>Selectors</h2>
+    <h2 class="pt-3">Selectors</h2>
     <div class="class">
       <div class="container">
         <a class="link" href="#">
@@ -43,6 +52,16 @@
           <b>:)</b>
         </a>
       </div>
+    </div>
+    <h2 class="pt-4">Box model</h2>
+    <div class="special-div shadow-lg">
+      <img
+        class="w-100 h-100"
+        src="img/generated-001x.png"
+        alt="Hedgehog Choco Testy"
+        width="150"
+        height="150"
+      />
     </div>
   </body>
 </html>
