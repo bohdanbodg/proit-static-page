@@ -48,6 +48,21 @@
       button.special-button:hover {
         background-color: darkblue;
       }
+
+      .custom-block {
+        display: block;
+        border: 1px dashed black;
+      }
+
+      .custom-inline {
+        display: inline;
+        border: 1px dashed black;
+      }
+
+      .custom-inline-block {
+        display: inline-block;
+        border: 1px dashed black;
+      }
     </style>
   </head>
   <body>
@@ -86,5 +101,19 @@
     >
       Hello
     </button>
+    <h2 class="pt-3">Display</h2>
+    <div class="custom-block">display: block;</div>
+    <div class="custom-inline" style="width: 200px; height: 50px">
+      display: inline;
+    </div>
+    <div class="custom-inline" style="width: 200px; height: 50px">
+      display: inline;
+    </div>
+    <div class="custom-inline-block" style="width: 200px; height: 50px">
+      display: inline-block;
+    </div>
+    <div class="custom-inline-block" style="width: 200px; height: 50px">
+      display: inline-block;
+    </div>
   </body>
 </html>
