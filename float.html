@@ -3,34 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Float</title>
     <script src="js/main.js"></script>
     <style>
       .some-block {
         width: 25%;
         height: 100px;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <h1>Float</h1>
-    <div class="container">
+    <div class="container clearfix mb-4">
       <div
         class="some-block shadow"
         style="float: left; background-color: greenyellow"
-      ></div>
-      <div
-        class="some-block shadow"
-        style="float: left; background-color: yellow"
-      ></div>
+      >
+        (1)<br />float: left;
+      </div>
       <div
         class="some-block shadow"
         style="float: right; background-color: red"
-      ></div>
+      >
+        (2)<br />float: right;
+      </div>
+      <div
+        class="some-block shadow"
+        style="float: left; background-color: yellow"
+      >
+        (3)<br />float: left;
+      </div>
       <div
         class="some-block shadow"
         style="float: right; background-color: orange"
-      ></div>
+      >
+        (4)<br />float: right;
+      </div>
+    </div>
+    <h2>Clear</h2>
+    <div class="container">
+      <div
+        class="some-block shadow"
+        style="float: left; background-color: violet"
+      >
+        (1)<br />float: left;
+      </div>
+      <div
+        class="some-block shadow"
+        style="
+          float: right;
+          height: 200px;
+          background-color: rebeccapurple;
+          color: white;
+        "
+      >
+        (2)<br />float: right;
+      </div>
+      <div
+        class="p-1 text-center shadow"
+        style="clear: none; background-color: cornflowerblue"
+      >
+        (3)<br />clear: none;
+      </div>
+      <div
+        class="p-1 text-center shadow"
+        style="clear: left; background-color: aquamarine"
+      >
+        (4)<br />clear: left;
+      </div>
+      <div
+        class="p-1 text-center shadow"
+        style="clear: right; background-color: aqua"
+      >
+        (5)<br />clear: right;
+      </div>
     </div>
   </body>
 </html>
