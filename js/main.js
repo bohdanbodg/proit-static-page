@@ -174,7 +174,7 @@ var components = {
 
 components.add({
   name: components.base.name,
-  deps: ["base/bootstrap", "base/styles", "page-title", "semantic"],
+  deps: ["base/bootstrap", "base/styles", "page-title", "icon", "semantic"],
   public: {
     /**
      * @param {string} url
