@@ -20,10 +20,20 @@
         box-shadow: 5px 10px 20px 0px palevioletred,
           inset -3px -5px 20px 0px skyblue;
       }
+
+      .block-shadow p {
+        transition: color 0.3s ease-in-out;
+      }
+
+      .block-shadow p:hover {
+        color: cornflowerblue;
+      }
     </style>
   </head>
   <body>
     <h1>Shadow</h1>
-    <div class="block-shadow m-2 p-2">Some text here</div>
+    <div class="block-shadow m-2 p-3">
+      <p>Some text here</p>
+    </div>
   </body>
 </html>
