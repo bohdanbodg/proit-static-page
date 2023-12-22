@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex</title>
+    <script src="js/main.js"></script>
+    <style>
+      .custom-flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .custom-flex-item {
+        flex: 2 1 150px;
+        height: 150px;
+        background-color: blanchedalmond;
+        text-align: center;
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Flex</h1>
+    <div class="container custom-flex">
+      <div
+        class="custom-flex-item m-1 p-3 shadow-sm border border-opacity-10 border-black"
+      >
+        A
+      </div>
+      <div
+        class="custom-flex-item m-1 p-3 shadow-sm border border-opacity-10 border-black"
+      >
+        B
+      </div>
+      <div
+        class="custom-flex-item m-1 p-3 shadow-sm border border-opacity-10 border-black"
+      >
+        C
+      </div>
+    </div>
+  </body>
+</html>
