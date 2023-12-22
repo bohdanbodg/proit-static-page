@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shadow</title>
+    <script src="js/main.js"></script>
+    <style>
+      .block-shadow {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        box-shadow: 5px 10px 20px 0px skyblue,
+          inset -3px -5px 20px 0px palevioletred;
+        text-align: center;
+        transition: box-shadow 0.5s ease-in-out;
+      }
+
+      .block-shadow:hover {
+        box-shadow: 5px 10px 20px 0px palevioletred,
+          inset -3px -5px 20px 0px skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shadow</h1>
+    <div class="block-shadow m-2 p-2">Some text here</div>
+  </body>
+</html>
