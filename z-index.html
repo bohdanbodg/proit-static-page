@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>z-index</title>
+    <script src="js/main.js"></script>
+    <style>
+      .custom-block {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+        vertical-align: middle;
+        font-weight: 300;
+      }
+
+      .zindex-1 {
+        z-index: 1;
+        background-color: aquamarine;
+        top: 120px;
+        left: 20px;
+      }
+
+      .zindex-2 {
+        z-index: 2;
+        background-color: lightblue;
+        top: 160px;
+        left: 60px;
+      }
+
+      .zindex-3 {
+        z-index: 3;
+        background-color: wheat;
+        top: 200px;
+        left: 100px;
+      }
+
+      .zindex-4 {
+        z-index: 4;
+        background-color: thistle;
+        top: 240px;
+        left: 140px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>z-index</h1>
+    <div
+      class="custom-block zindex-4 shadow border border-dark border-opacity-10"
+    >
+      z-index: 4;
+    </div>
+    <div
+      class="custom-block zindex-3 shadow border border-dark border-opacity-10"
+    >
+      z-index: 3;
+    </div>
+    <div
+      class="custom-block zindex-2 shadow border border-dark border-opacity-10"
+    >
+      z-index: 2;
+    </div>
+    <div
+      class="custom-block zindex-1 shadow border border-dark border-opacity-10"
+    >
+      z-index: 1;
+    </div>
+  </body>
+</html>

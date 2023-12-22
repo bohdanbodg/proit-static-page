@@ -34,3 +34,7 @@ table.table tr:last-child td {
 .color-tomato {
   color: tomato;
 }
+
+html {
+  scroll-behavior: smooth;
+}
