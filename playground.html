@@ -35,7 +35,7 @@
       }
 
       button.special-button {
-        background-color: blue;
+        background-color: indianred;
         color: white;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -43,10 +43,15 @@
         padding-right: 40px;
         border-radius: 10px;
         border: 0;
+        width: 150px;
+        transition: background-color 1s ease-in-out, color 1s ease-in-out;
       }
 
       button.special-button:hover {
-        background-color: darkblue;
+        background-color: khaki;
+        color: black;
+        cursor: pointer;
+        width: 170px;
       }
 
       .custom-block {
@@ -117,13 +122,15 @@
       />
     </div>
     <h2 class="mt-3">Button</h2>
-    <button
-      type="button"
-      class="special-button shadow"
-      onclick="alert('Welcome!')"
-    >
-      Hello
-    </button>
+    <div id="button" class="container">
+      <button
+        type="button"
+        class="special-button shadow"
+        onclick="alert('Welcome!')"
+      >
+        Hello
+      </button>
+    </div>
     <h2 class="mt-3">Display</h2>
     <div class="custom-block">display: block;</div>
     <div class="custom-inline" style="width: 200px; height: 50px">
