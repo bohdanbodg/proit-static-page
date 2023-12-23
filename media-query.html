@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Query</title>
+    <script src="js/main.js"></script>
+    <style>
+      @media screen and (max-width: 600px) {
+        .custom-media-query {
+          font-size: 18px;
+        }
+      }
+
+      @media screen and (min-width: 600px) and (max-width: 900px) {
+        .custom-media-query {
+          font-size: 20px;
+        }
+      }
+
+      @media screen and (min-width: 900px) {
+        .custom-media-query {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Media Query</h1>
+    <h2>Font size</h2>
+    <div class="container custom-media-query px-2 py-1 border">
+      <p id="output"></p>
+    </div>
+    <script>
+      function onResize() {
+        const container = document.querySelector(".custom-media-query");
+        const fontSize = window.getComputedStyle(container).fontSize;
+        const output = document.querySelector("#output");
+        const windowWidth = window.innerWidth;
+
+        output.innerHTML = `window.width: ${windowWidth}px;<br />font-size: ${fontSize};`;
+      }
+
+      window.addEventListener("resize", onResize);
+      onResize();
+    </script>
+  </body>
+</html>
