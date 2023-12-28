@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <script src="js/main.js"></script>
+    <style>
+      .custom-container {
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+          "header header header"
+          "sidebar sidebar main"
+          "footer footer footer";
+      }
+
+      .custom-container header {
+        grid-area: header;
+        background-color: aliceblue;
+      }
+
+      .custom-container aside {
+        grid-area: sidebar;
+        background-color: floralwhite;
+      }
+
+      .custom-container main {
+        grid-area: main;
+        background-color: cornsilk;
+      }
+
+      .custom-container footer {
+        grid-area: footer;
+        background-color: beige;
+      }
+
+      .custom-container header,
+      .custom-container aside,
+      .custom-container main,
+      .custom-container footer {
+        transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      }
+
+      .custom-container header:hover,
+      .custom-container aside:hover,
+      .custom-container main:hover,
+      .custom-container footer:hover {
+        transform: scale(1.02);
+        border-color: rgba(var(--bs-black-rgb), 0.2) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grid</h1>
+    <div class="custom-container p-2 border">
+      <header class="m-1 p-2 border border-black border-opacity-10 shadow-sm">
+        header
+      </header>
+      <aside class="m-1 p-2 border border-black border-opacity-10 shadow-sm">
+        sidebar
+      </aside>
+      <main class="m-1 p-2 border border-black border-opacity-10 shadow-sm">
+        main
+      </main>
+      <footer class="m-1 p-2 border border-black border-opacity-10 shadow-sm">
+        footer
+      </footer>
+    </div>
+  </body>
+</html>
