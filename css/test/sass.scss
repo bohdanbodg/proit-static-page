@@ -1,0 +1,22 @@
+@use "sass:color";
+
+$text-color: #161616;
+$primary-color: #4781de;
+$bg-primary-color: #f7f7f7;
+
+@mixin on-hover-color-change($color) {
+  color: color.scale($color, $lightness: -10%);
+}
+
+body {
+  color: $text-color;
+  background-color: $bg-primary-color;
+}
+
+a {
+  color: $primary-color;
+
+  &:hover {
+    @include on-hover-color-change($primary-color);
+  }
+}

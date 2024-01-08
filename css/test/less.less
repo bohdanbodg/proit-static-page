@@ -1,0 +1,23 @@
+@text-color: #171515;
+@primary-color: #e84a2e;
+@bg-primary-color: #faebe8;
+
+.button (@bg, @text, @border: black) {
+  color: @text;
+  background-color: @bg;
+  border: 1px solid fade(@border, 10%);
+  border-radius: 20px;
+
+  &:hover {
+    background-color: darken(@bg, 10%, relative);
+  }
+}
+
+body {
+  color: @text-color;
+  background-color: @bg-primary-color;
+}
+
+button {
+  .button(@primary-color, @text-color);
+}
