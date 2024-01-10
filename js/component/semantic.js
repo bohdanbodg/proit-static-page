@@ -2,7 +2,7 @@ components.add({
   name: "semantic",
   deps: ["page-title"],
   public: {
-    copyright: "2023 Bohdan",
+    copyright: "2024 Bohdan",
   },
   private: {
     init: function () {
@@ -47,6 +47,14 @@ components.add({
       document.body.innerHTML = main.outerHTML;
 
       document.querySelectorAll("[autofocus]").forEach((el) => el.focus());
+
+      const hashtag = window.location.hash ?? "";
+      if (hashtag.length !== 0) {
+        const el = document.querySelector(hashtag);
+        if (el !== null) {
+          el.scrollIntoView();
+        }
+      }
     },
 
     initFooter: function () {

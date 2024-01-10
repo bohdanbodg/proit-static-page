@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HopeKid</title>
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css" />
+    <script
+      type="text/javascript"
+      src="js/lib/bootstrap.bundle.min.js"
+    ></script>
+    <style>
+      .bg-image-welcome {
+        background-image: url("img/hopekid/mother-7181975_1920.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 60% top;
+        height: 1000px;
+        max-width: 100%;
+        box-shadow: 0px -100px 50px -20px inset rgba(0, 0, 0, 0.05);
+      }
+
+      @media screen and (max-width: 270px) {
+        .logo {
+          width: 35px;
+          height: 35px;
+        }
+
+        .bg-image-welcome {
+          height: 400px;
+        }
+      }
+
+      @media screen and (min-width: 270px) and (max-width: 370px) {
+        .logo {
+          width: 40px;
+          height: 40px;
+        }
+
+        .bg-image-welcome {
+          height: 500px;
+        }
+      }
+
+      @media screen and (min-width: 370px) and (max-width: 470px) {
+        .logo {
+          width: 45px;
+          height: 45px;
+        }
+
+        .bg-image-welcome {
+          height: 600px;
+        }
+      }
+
+      @media screen and (min-width: 470px) and (max-width: 570px) {
+        .logo {
+          width: 50px;
+          height: 50px;
+        }
+
+        .bg-image-welcome {
+          height: 700px;
+        }
+      }
+
+      @media screen and (min-width: 570px) and (max-width: 670px) {
+        .logo {
+          width: 55px;
+          height: 55px;
+        }
+
+        .bg-image-welcome {
+          height: 800px;
+        }
+      }
+
+      @media screen and (min-width: 670px) and (max-width: 770px) {
+        .logo {
+          width: 60px;
+          height: 60px;
+        }
+
+        .bg-image-welcome {
+          height: 900px;
+        }
+      }
+
+      @media screen and (min-width: 770px) {
+        .logo {
+          width: 70px;
+          height: 70px;
+        }
+
+        .bg-image-welcome {
+          height: 1000px;
+        }
+      }
+
+      .bg-about {
+        background-image: linear-gradient(
+            180deg,
+            rgba(226, 141, 147, 1) 5%,
+            rgba(237, 183, 188, 1) 100%
+          ),
+          radial-gradient(
+            ellipse at top left,
+            rgba(229, 144, 150, 1) 0%,
+            transparent 100%
+          ),
+          radial-gradient(
+            ellipse at top right,
+            rgba(225, 138, 145, 1) 0%,
+            transparent 100%
+          );
+        height: auto;
+        box-shadow: 0px 100px 50px -20px inset rgba(0, 0, 0, 0.05);
+      }
+
+      .bg-footer {
+        background-color: rgba(237, 183, 188, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container-fluid bg-header position-absolute pt-2">
+      <nav class="nav nav-underline">
+        <div class="container">
+          <div class="row opacity-50 justify-content-start">
+            <div class="col-auto">
+              <a class="nav-link link-dark" href="/index.html">Home</a>
+            </div>
+            <div class="col-auto">
+              <a class="nav-link link-dark" href="#" onclick="moveToAboutUs()"
+                >About Us</a
+              >
+            </div>
+            <div class="col-auto">
+              <a
+                class="nav-link link-dark"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#signin-popup"
+                >Sign In</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container-fluid px-0 text-light">
+      <section class="bg-image-welcome pt-5 text-center">
+        <img
+          class="logo mt-4"
+          src="img/hopekid/logo001.png"
+          alt="Logo"
+          width="70"
+          height="70"
+        />
+        <h1 class="fs-1 fw-bold">HopeKid</h1>
+      </section>
+      <section id="about-us" class="bg-about pt-5 pb-5">
+        <div class="d-flex flex-column align-items-center">
+          <div
+            class="d-flex flex-row flex-nowrap align-content-center align-items-center p-3"
+            style="max-width: 800px"
+          >
+            <img
+              src="img/hopekid/kid001.png"
+              alt="Kid"
+              width="100"
+              height="300"
+              style="min-width: 100px"
+            />
+            <div class="m-3">
+              <h3>Our Mission</h3>
+              <p>
+                We are dedicated to providing support and care for children who
+                have lost their parents, ensuring they find hope and happiness.
+              </p>
+            </div>
+          </div>
+          <div
+            class="d-flex flex-row-reverse flex-nowrap align-content-center align-items-center p-3"
+            style="max-width: 800px"
+          >
+            <img
+              src="img/hopekid/family001.png"
+              alt="Family"
+              width="200"
+              height="300"
+              style="min-width: 200px"
+            />
+            <div class="m-3">
+              <h3>Our Values</h3>
+              <p>
+                Compassion, empathy, and commitment drive us to create a
+                positive impact on the lives of the children we serve.
+              </p>
+            </div>
+          </div>
+          <div
+            class="d-flex flex-row flex-nowrap align-content-center align-items-center p-3"
+            style="max-width: 800px"
+          >
+            <img
+              src="img/hopekid/donate001.png"
+              alt="Donate"
+              width="150"
+              height="150"
+              style="min-width: 150px"
+            />
+            <div class="m-3">
+              <h3>How You Can Help</h3>
+              <p>
+                Your support, whether through donations or volunteering, plays a
+                crucial role in uplifting the lives of these children.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="container-fluid px-0 pt-5 pb-3 bg-footer text-center text-dark text-opacity-25"
+    >
+      &copy; 2024 HopeKid
+    </footer>
+    <div
+      class="modal fade"
+      id="signin-popup"
+      tabindex="-1"
+      aria-labelledby="signin-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog shadow">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="signin-title">Sign In Form</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="signin-form">
+              <div class="mb-2">
+                <label for="signin-email" class="col-form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signin-email"
+                  placeholder="name@example.com"
+                  required
+                />
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="mb-2">
+                <label for="signin-password" class="col-form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signin-password"
+                  required
+                />
+                <div class="invalid-feedback"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary px-4"
+              onclick="onLogin()"
+            >
+              Log In
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function moveToAboutUs() {
+        const aboutUsContainer = document.querySelector("#about-us");
+        if (aboutUsContainer !== null) {
+          aboutUsContainer.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      function onLogin() {
+        try {
+          validator.validateForm();
+        } catch (err) {
+          console.error(err.message);
+
+          return;
+        }
+
+        console.info("login");
+      }
+
+      const validator = {
+        selectors: {
+          email: "#signin-email",
+          password: "#signin-password",
+        },
+        errors: [],
+
+        validateForm: function () {
+          this.errors = [];
+
+          this.validateEmail(document.querySelector(this.selectors.email));
+          this.validatePassword(
+            document.querySelector(this.selectors.password)
+          );
+
+          if (this.errors.length > 0) {
+            throw new Error(this.errors.join("\n\n"));
+          }
+        },
+
+        validateEmail: function (element) {
+          this.validateElement(element, (el, val) => {
+            if (el === null) {
+              throw new Error("Email input not found!");
+            } else if (this.isEmptyString(val)) {
+              throw new Error("Enter email!");
+            } else if (
+              !(val.includes("@") && val.includes(".") && val.length > 4)
+            ) {
+              throw new Error("Enter correct email!");
+            }
+          });
+        },
+
+        validatePassword: function (element) {
+          this.validateElement(element, (el, val) => {
+            if (el === null) {
+              throw new Error("Password input not found!");
+            } else if (this.isEmptyString(val)) {
+              throw new Error("Enter password!");
+            } else if (val.length < 8) {
+              throw new Error("Enter correct password!");
+            }
+          });
+        },
+
+        validateElement: function (element, callback) {
+          try {
+            const value = element === null ? null : element.value;
+            callback(element, value);
+
+            this.toggleValidElement(element, true);
+            this.updateInvalidMessage(element, "");
+          } catch (err) {
+            this.toggleValidElement(element, false);
+            this.updateInvalidMessage(element, err.message);
+
+            this.errors.push(err.message);
+          }
+        },
+
+        updateInvalidMessage: function (element, message) {
+          if (element === null) {
+            return;
+          }
+
+          const feedbackElement =
+            element.parentElement.querySelector(".invalid-feedback");
+          if (feedbackElement !== null) {
+            feedbackElement.innerText = message;
+          }
+        },
+
+        toggleValidElement: function (element, isValid) {
+          const validClass = "is-valid";
+          const invalidClass = "is-invalid";
+
+          element.classList.remove(isValid ? invalidClass : validClass);
+          element.classList.add(isValid ? validClass : invalidClass);
+        },
+
+        isEmptyString: function (text, checkWhitespace = true) {
+          if (typeof text !== "string") {
+            return false;
+          }
+
+          return (
+            text.length === 0 || (checkWhitespace && text.trim().length === 0)
+          );
+        },
+      };
+    </script>
+  </body>
+</html>
