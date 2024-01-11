@@ -118,6 +118,12 @@
       .square-150:active {
         transform: scale(1.5) rotate(270deg);
       }
+
+      /* CSS Attribute Selectors */
+      p[data-custom^="info"] {
+        color: dodgerblue;
+        padding-bottom: 15px;
+      }
     </style>
   </head>
   <body>
@@ -201,6 +207,16 @@
       <div
         class="square-150 border border-black border-opacity-10 shadow-sm"
       ></div>
+    </div>
+    <h2 class="mt-3">Attribute Selectors</h2>
+    <div id="attr-sel" class="container border p-3">
+      <p>&lt;p&gt;</p>
+      <hr />
+      <p data-custom="another">&lt;p data-custom="another"&gt;</p>
+      <hr />
+      <p data-custom="information">&lt;p data-custom="information"&gt;</p>
+      <hr />
+      <p data-custom="information">&lt;p data-custom="information"&gt;</p>
     </div>
   </body>
 </html>
