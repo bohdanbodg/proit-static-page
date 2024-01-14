@@ -124,6 +124,14 @@
         color: dodgerblue;
         padding-bottom: 15px;
       }
+
+      /* CSS :active & :focus events */
+      #active-focus button:active {
+        color: aqua;
+      }
+      #active-focus input:focus {
+        color: green;
+      }
     </style>
   </head>
   <body>
@@ -217,6 +225,18 @@
       <p data-custom="information">&lt;p data-custom="information"&gt;</p>
       <hr />
       <p data-custom="information">&lt;p data-custom="information"&gt;</p>
+    </div>
+    <h2 class="mt-3">Active & Focus</h2>
+    <div id="active-focus" class="container border p-3">
+      <div class="mb-2">
+        <button type="button" class="btn btn-primary px-4">
+          :active styles
+        </button>
+      </div>
+      <div>
+        <label>:focus styles</label>
+        <input type="text" class="form-control" />
+      </div>
     </div>
   </body>
 </html>
