@@ -163,3 +163,18 @@ a.file[href$=".docx"]::before {
 #nth-child ul li:nth-child(4n + 3) {
   color: red;
 }
+
+/* CSS Filter */
+#filter .image-effect {
+  border-radius: 100px;
+  transition: filter 0.6s ease-in-out;
+}
+#filter .image-effect.color-invert:hover {
+  filter: invert(100%);
+}
+#filter .image-effect.blur:hover {
+  filter: blur(10px);
+}
+#filter .image-effect.saturate:hover {
+  filter: saturate(200%);
+}
