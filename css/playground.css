@@ -1,0 +1,165 @@
+/* CSS Variables Declaration */
+:root {
+  --button-border: 2px solid black;
+}
+
+/* CSS Vendor Prefixes */
+.color-yellowgreen {
+  -webkit-color: greenyellow;
+  -moz-color: greenyellow;
+  -ms-color: greenyellow;
+  -o-color: greenyellow;
+  color: yellowgreen;
+}
+
+/* CSS Colors */
+.highlight {
+  color: green;
+  font-weight: bold;
+}
+
+/* CSS Selectors */
+div.class a.link[href="#"] > span + b {
+  color: red;
+}
+div.class a.link[href="#"] {
+  text-decoration: none;
+  border: dashed cornflowerblue;
+  padding: 4px;
+}
+
+/* CSS Box Model */
+div.special-div {
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  margin: 20px;
+  border: 5px solid black;
+}
+
+/* CSS Button */
+button.special-button {
+  /* CSS Variables Usage */
+  border: var(--button-border);
+
+  background-color: indianred;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 10px;
+  width: 150px;
+  transition: background-color 1s ease-in-out, color 1s ease-in-out;
+}
+button.special-button:hover {
+  background-color: khaki;
+  color: black;
+  cursor: pointer;
+  width: 170px;
+}
+
+/* CSS Display */
+.custom-block {
+  display: block;
+  border: 1px dashed black;
+}
+.custom-inline {
+  display: inline;
+  border: 1px dashed black;
+}
+.custom-inline-block {
+  display: inline-block;
+  border: 1px dashed black;
+}
+
+/* CSS Overflow */
+.custom-overflow {
+  padding: 6px;
+  width: 150px;
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-wrap: nowrap;
+}
+
+/* CSS Font */
+#font p {
+  font-size: 16px;
+  font-family: "Arial", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* CSS Text */
+.custom-title {
+  text-transform: capitalize;
+  text-align: center;
+  text-decoration: underline red dashed 2px;
+}
+
+/* CSS Transform */
+.square-150 {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  background-color: aliceblue;
+  transition: transform 1s ease-in-out;
+}
+.square-150:hover {
+  transform: scale(2) rotate(90deg);
+}
+.square-150:active {
+  transform: scale(1.5) rotate(270deg);
+}
+
+/* CSS Attribute Selectors */
+p[data-custom^="info"] {
+  color: dodgerblue;
+  padding-bottom: 15px;
+}
+
+/* CSS :active & :focus */
+#active-focus button:active {
+  color: aqua;
+}
+#active-focus input:focus {
+  color: green;
+}
+
+/* CSS ::before & ::after */
+a.file {
+  text-decoration: none;
+}
+a.file:hover {
+  text-decoration: underline;
+  font-weight: 600;
+}
+a.file[href$=".doc"]::before,
+a.file[href$=".docx"]::before {
+  font: var(--fa-font-solid);
+  content: "\f1c2";
+  margin-right: 4px;
+}
+
+/* CSS :first-child & :last-child */
+#first-last-child p {
+  border-radius: 4px;
+  padding: 4px;
+}
+#first-last-child p:first-child {
+  background-color: rgba(0, 250, 0, 0.2);
+}
+#first-last-child p:last-child {
+  background-color: rgba(250, 250, 0, 0.2);
+}
+
+/* CSS :nth-child */
+#nth-child ul li:hover {
+  font-weight: 600;
+}
+#nth-child ul li:nth-child(4n + 3) {
+  color: red;
+}

@@ -38,3 +38,7 @@ table.table tr:last-child td {
 html {
   scroll-behavior: smooth;
 }
+
+.list-group-item a {
+  text-decoration: none;
+}

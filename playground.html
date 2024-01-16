@@ -5,298 +5,225 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground</title>
     <script src="js/main.js"></script>
-    <style>
-      /* CSS Variables Declaration */
-      :root {
-        --button-border: 2px solid black;
-      }
-
-      .color-yellowgreen {
-        -webkit-color: greenyellow;
-        -moz-color: greenyellow;
-        -ms-color: greenyellow;
-        -o-color: greenyellow;
-        color: yellowgreen;
-      }
-
-      .highlight {
-        color: green;
-        font-weight: bold;
-      }
-
-      div.class a.link[href="#"] > span + b {
-        color: red;
-      }
-
-      div.class a.link[href="#"] {
-        text-decoration: none;
-        border: dashed cornflowerblue;
-        padding: 4px;
-      }
-
-      div.special-div {
-        box-sizing: border-box;
-        width: 200px;
-        height: 200px;
-        padding: 10px;
-        margin: 20px;
-        border: 5px solid black;
-      }
-
-      button.special-button {
-        /* CSS Variables Usage */
-        border: var(--button-border);
-
-        background-color: indianred;
-        color: white;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        padding-left: 40px;
-        padding-right: 40px;
-        border-radius: 10px;
-        width: 150px;
-        transition: background-color 1s ease-in-out, color 1s ease-in-out;
-      }
-
-      button.special-button:hover {
-        background-color: khaki;
-        color: black;
-        cursor: pointer;
-        width: 170px;
-      }
-
-      .custom-block {
-        display: block;
-        border: 1px dashed black;
-      }
-
-      .custom-inline {
-        display: inline;
-        border: 1px dashed black;
-      }
-
-      .custom-inline-block {
-        display: inline-block;
-        border: 1px dashed black;
-      }
-
-      .custom-overflow {
-        padding: 6px;
-        width: 150px;
-        height: 100px;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        text-wrap: nowrap;
-      }
-
-      #font p {
-        font-size: 16px;
-        font-family: "Arial", sans-serif;
-        font-style: italic;
-        font-weight: 700;
-        line-height: 1.6;
-      }
-
-      .custom-title {
-        text-transform: capitalize;
-        text-align: center;
-        text-decoration: underline red dashed 2px;
-      }
-
-      .square-150 {
-        width: 100px;
-        height: 100px;
-        display: inline-block;
-        background-color: aliceblue;
-        transition: transform 1s ease-in-out;
-      }
-
-      .square-150:hover {
-        transform: scale(2) rotate(90deg);
-      }
-
-      .square-150:active {
-        transform: scale(1.5) rotate(270deg);
-      }
-
-      /* CSS Attribute Selectors */
-      p[data-custom^="info"] {
-        color: dodgerblue;
-        padding-bottom: 15px;
-      }
-
-      /* CSS :active & :focus events */
-      #active-focus button:active {
-        color: aqua;
-      }
-      #active-focus input:focus {
-        color: green;
-      }
-
-      /* CSS ::before & ::after */
-      a.file {
-        text-decoration: none;
-      }
-      a.file:hover {
-        text-decoration: underline;
-        font-weight: 600;
-      }
-      a.file[href$=".doc"]::before,
-      a.file[href$=".docx"]::before {
-        font: var(--fa-font-solid);
-        content: "\f1c2";
-        margin-right: 4px;
-      }
-
-      /* CSS :first-child & :last-child */
-      #first-last-child p {
-        border-radius: 4px;
-        padding: 4px;
-      }
-      #first-last-child p:first-child {
-        background-color: rgba(0, 250, 0, 0.2);
-      }
-      #first-last-child p:last-child {
-        background-color: rgba(250, 250, 0, 0.2);
-      }
-    </style>
+    <link rel="stylesheet" href="css/playground.css" />
   </head>
   <body>
     <h1>Playground</h1>
-    <h2>Colors</h2>
-    <p style="color: violet">Paragraph 1.</p>
-    <p class="color-yellowgreen">Paragraph 2.</p>
-    <p class="color-tomato">Paragraph 3.</p>
-    <div class="highlight">Some highlighted text here.</div>
-    <p class="highlight">Highlighted paragraph.</p>
-    <h2 class="mt-3">Selectors</h2>
-    <div class="class">
-      <div class="container">
-        <a class="link" href="#">
-          <span>Some</span>
-          <b>link</b>
-          <b>:)</b>
-        </a>
+
+    <!-- CSS Colors -->
+    <div class="card w-100 shadow-sm mb-3">
+      <div class="card-header fs-4">Colors</div>
+      <div class="card-body">
+        <p style="color: violet">Paragraph 1.</p>
+        <p class="color-yellowgreen">Paragraph 2.</p>
+        <p class="color-tomato">Paragraph 3.</p>
+        <div class="highlight">Some highlighted text here.</div>
+        <p class="highlight">Highlighted paragraph.</p>
       </div>
     </div>
-    <h2 class="mt-3">Box model</h2>
-    <div class="special-div shadow-lg">
-      <img
-        class="w-100 h-100"
-        src="img/generated-001x.png"
-        alt="Hedgehog Choco Testy"
-        width="150"
-        height="150"
-      />
+
+    <!-- CSS Selectors -->
+    <div class="card w-100 shadow-sm mb-3">
+      <div class="card-header fs-4">Selectors</div>
+      <div class="card-body">
+        <div class="class">
+          <div class="container">
+            <a class="link" href="#">
+              <span>Some</span>
+              <b>link</b>
+              <b>:)</b>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <h2 class="mt-3">Button</h2>
-    <div id="button" class="container">
-      <button
-        type="button"
-        class="special-button shadow"
-        onclick="alert('Welcome!')"
-      >
-        Hello
-      </button>
+
+    <!-- CSS Box Model -->
+    <div class="card w-100 shadow-sm mb-3">
+      <div class="card-header fs-4">Box Model</div>
+      <div class="card-body">
+        <div class="special-div shadow-lg">
+          <img
+            class="w-100 h-100"
+            src="img/generated-001x.png"
+            alt="Hedgehog Choco Testy"
+            width="150"
+            height="150"
+          />
+        </div>
+      </div>
     </div>
-    <h2 class="mt-3">Display</h2>
-    <div class="custom-block">display: block;</div>
-    <div class="custom-inline" style="width: 200px; height: 50px">
-      display: inline;
-    </div>
-    <div class="custom-inline" style="width: 200px; height: 50px">
-      display: inline;
-    </div>
-    <div class="custom-inline-block" style="width: 200px; height: 50px">
-      display: inline-block;
-    </div>
-    <div class="custom-inline-block" style="width: 200px; height: 50px">
-      display: inline-block;
-    </div>
-    <h2 class="mt-3">Overflow</h2>
-    <div id="overflow" class="custom-overflow border">
-      Here should be a long text.<br />
-      Here should be a long text.<br />
-      Here should be a long text.<br />
-      Here should be a long text.<br />
-      Here should be a long text.<br />
-      Here should be a long text.<br />
-      Here should be a long text.
-    </div>
-    <h2 class="mt-3">Font</h2>
-    <div id="font" class="p-2 border shadow-sm">
-      <p>
-        font-size: 16px;<br />
-        font-family: "Arial", sans-serif;<br />
-        font-style: italic;<br />
-        font-weight: 700;<br />
-        line-height: 1.6;
-      </p>
-    </div>
-    <h2 class="mt-3">Text</h2>
-    <div id="text" class="container custom-title border shadow-sm p-3">
-      Some beautiful text here &#129300;
-    </div>
-    <h2 class="mt-3">Transform</h2>
-    <div id="transform" class="container">
-      <div
-        class="square-150 border border-black border-opacity-10 shadow-sm"
-      ></div>
-    </div>
-    <h2 class="mt-3">Attribute Selectors</h2>
-    <div id="attr-sel" class="container border p-3">
-      <p>&lt;p&gt;</p>
-      <hr />
-      <p data-custom="another">&lt;p data-custom="another"&gt;</p>
-      <hr />
-      <p data-custom="information">&lt;p data-custom="information"&gt;</p>
-      <hr />
-      <p data-custom="information">&lt;p data-custom="information"&gt;</p>
-    </div>
-    <h2 class="mt-3">Active & Focus</h2>
-    <div id="active-focus" class="container border p-3">
-      <div class="mb-2">
-        <button type="button" class="btn btn-primary px-4">
-          :active styles
+
+    <!-- CSS Button -->
+    <div class="card w-100 shadow-sm mb-3" id="button">
+      <div class="card-header fs-4">Button</div>
+      <div class="card-body">
+        <button
+          type="button"
+          class="special-button shadow"
+          onclick="alert('Welcome!')"
+        >
+          Hello
         </button>
       </div>
-      <div>
-        <label>:focus styles</label>
-        <input type="text" class="form-control" />
-      </div>
     </div>
-    <h2 class="mt-3">Before & After</h2>
-    <div id="before-after" class="container border p-3">
-      <strong class="fs-5">Files</strong>
-      <div class="row mt-2">
-        <div class="col">
-          <a class="file" href="/files/a.doc">a.doc</a>
+
+    <!-- CSS Display -->
+    <div class="card w-100 shadow-sm mb-3" id="display">
+      <div class="card-header fs-4">Display</div>
+      <div class="card-body">
+        <div class="custom-block">display: block;</div>
+        <div class="custom-inline" style="width: 200px; height: 50px">
+          display: inline;
         </div>
-        <div class="col">
-          <a class="file" href="/files/b.docx">b.docx</a>
+        <div class="custom-inline" style="width: 200px; height: 50px">
+          display: inline;
         </div>
-        <div class="col">
-          <a class="file" href="/files/c.pdf">c.pdf</a>
+        <div class="custom-inline-block" style="width: 200px; height: 50px">
+          display: inline-block;
         </div>
-      </div>
-      <div class="row mt-2">
-        <div class="col">
-          <a class="file" href="/files/d.rtf">d.rtf</a>
-        </div>
-        <div class="col">
-          <a class="file" href="/files/e.docx">e.docx</a>
-        </div>
-        <div class="col">
-          <a class="file" href="/files/f.doc">f.doc</a>
+        <div class="custom-inline-block" style="width: 200px; height: 50px">
+          display: inline-block;
         </div>
       </div>
     </div>
-    <h2 class="mt-3">First & Last Child</h2>
-    <div id="first-last-child" class="container border p-3">
-      <p>Paragraph 1.</p>
-      <p>Paragraph 2.</p>
-      <p>Paragraph 3.</p>
-      <p>Paragraph 4.</p>
+
+    <!-- CSS Overflow -->
+    <div class="card w-100 shadow-sm mb-3" id="overflow">
+      <div class="card-header fs-4">Overflow</div>
+      <div class="card-body">
+        <div class="custom-overflow border">
+          Here should be a long text.<br />
+          Here should be a long text.<br />
+          Here should be a long text.<br />
+          Here should be a long text.<br />
+          Here should be a long text.<br />
+          Here should be a long text.<br />
+          Here should be a long text.
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS Font -->
+    <div class="card w-100 shadow-sm mb-3" id="font">
+      <div class="card-header fs-4">Font</div>
+      <div class="card-body">
+        <p>
+          font-size: 16px;<br />
+          font-family: "Arial", sans-serif;<br />
+          font-style: italic;<br />
+          font-weight: 700;<br />
+          line-height: 1.6;
+        </p>
+      </div>
+    </div>
+
+    <!-- CSS Text -->
+    <div class="card w-100 shadow-sm mb-3 z-2" id="text">
+      <div class="card-header fs-4">Text</div>
+      <div class="card-body">
+        <div class="custom-title">Some beautiful text here &#129300;</div>
+      </div>
+    </div>
+
+    <!-- CSS Transform -->
+    <div class="card w-100 shadow-sm mb-3 z-3" id="transform">
+      <div class="card-header fs-4">Transform</div>
+      <div class="card-body">
+        <div
+          class="square-150 border border-black border-opacity-10 shadow-sm"
+        ></div>
+      </div>
+    </div>
+
+    <!-- CSS Attribute Selectors -->
+    <div class="card w-100 shadow-sm mb-3 z-2" id="attr-sel">
+      <div class="card-header fs-4">Attribute Selectors</div>
+      <div class="card-body">
+        <p>&lt;p&gt;</p>
+        <hr />
+        <p data-custom="another">&lt;p data-custom="another"&gt;</p>
+        <hr />
+        <p data-custom="information">&lt;p data-custom="information"&gt;</p>
+        <hr />
+        <p data-custom="information">&lt;p data-custom="information"&gt;</p>
+      </div>
+    </div>
+
+    <!-- CSS :active & :focus -->
+    <div class="card w-100 shadow-sm mb-3" id="active-focus">
+      <div class="card-header fs-4">Active & Focus</div>
+      <div class="card-body">
+        <div class="mb-2">
+          <button type="button" class="btn btn-primary px-4">
+            :active styles
+          </button>
+        </div>
+        <div>
+          <label>:focus styles</label>
+          <input type="text" class="form-control" />
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS ::before & ::after -->
+    <div class="card w-100 shadow-sm mb-3" id="before-after">
+      <div class="card-header fs-4">Before & After</div>
+      <div class="card-body">
+        <strong class="card-title fs-5">Files</strong>
+        <div class="row mt-2">
+          <div class="col">
+            <a class="file" href="/files/a.doc">a.doc</a>
+          </div>
+          <div class="col">
+            <a class="file" href="/files/b.docx">b.docx</a>
+          </div>
+          <div class="col">
+            <a class="file" href="/files/c.pdf">c.pdf</a>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col">
+            <a class="file" href="/files/d.rtf">d.rtf</a>
+          </div>
+          <div class="col">
+            <a class="file" href="/files/e.docx">e.docx</a>
+          </div>
+          <div class="col">
+            <a class="file" href="/files/f.doc">f.doc</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS :first-child & :last-child -->
+    <div class="card w-100 shadow-sm mb-3" id="first-last-child">
+      <div class="card-header fs-4">First & Last Child</div>
+      <div class="card-body">
+        <p>Paragraph 1.</p>
+        <p>Paragraph 2.</p>
+        <p>Paragraph 3.</p>
+        <p>Paragraph 4.</p>
+      </div>
+    </div>
+
+    <!-- CSS :nth-child -->
+    <div class="card w-100 shadow-sm mb-3" id="nth-child">
+      <div class="card-header fs-4">nth-child</div>
+      <div class="card-body">
+        <ul>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+          <li>Element</li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
