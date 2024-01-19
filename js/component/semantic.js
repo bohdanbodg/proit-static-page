@@ -16,7 +16,7 @@ components.add({
 
       document.body.insertAdjacentHTML(
         "afterbegin",
-        `<header class="sticky-top bg-primary text-light shadow">
+        `<header class="sticky-top bg-light bg-opacity-75 text-dark shadow-sm border glass-effect">
           <nav class="nav nav-underline">
             <div class="container">
               <div class="row">
@@ -24,7 +24,7 @@ components.add({
                   <a class="navbar-brand h1 fs-4" href="#">${pageTitle.shortTitle}</a>
                 </div>
                 <div class="col-auto">
-                  <a class="nav-link link-light" href="/index.html">Home</a>
+                  <a class="nav-link link-dark" href="/index.html">Home</a>
                 </div>
               </div>
             </div>

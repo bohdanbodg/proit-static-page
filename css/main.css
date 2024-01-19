@@ -42,3 +42,9 @@ html {
 .list-group-item a {
   text-decoration: none;
 }
+
+header.glass-effect {
+  -moz-backdrop-filter: blur(10px) contrast(200%);
+  -webkit-backdrop-filter: blur(10px) contrast(200%);
+  backdrop-filter: blur(10px) contrast(200%);
+}
