@@ -178,3 +178,33 @@ a.file[href$=".docx"]::before {
 #filter .image-effect.saturate:hover {
   filter: saturate(200%);
 }
+
+/* CSS clip-path */
+#clip-path .redbox-200 {
+  width: 200px;
+  height: 200px;
+  background: indianred;
+  color: wheat;
+  font-weight: 500;
+  font-size: calc(var(--bs-body-font-size) * 1.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: ellipse(50% 50%);
+  transition: clip-path 0.5s ease;
+}
+#clip-path .redbox-200:hover {
+  clip-path: ellipse(25% 50%);
+}
+#clip-path .redbox-200::before {
+  content: "(";
+}
+#clip-path .redbox-200::after {
+  content: ")";
+}
+#clip-path .redbox-200:hover::before {
+  content: "";
+}
+#clip-path .redbox-200:hover::after {
+  content: "!";
+}
