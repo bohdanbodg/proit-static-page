@@ -16,7 +16,7 @@ components.add({
 
       document.body.insertAdjacentHTML(
         "afterbegin",
-        `<header class="sticky-top bg-light bg-opacity-75 text-dark shadow-sm border glass-effect">
+        `<header class="sticky-top bg-body-tertiary bg-opacity-75 text-dark shadow-sm border glass-effect">
           <nav class="nav nav-underline">
             <div class="container">
               <div class="row">

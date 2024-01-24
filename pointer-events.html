@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pointer Events</title>
+    <script src="js/main.js"></script>
+    <style>
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        /* backdrop-filter: blur(1px); */
+        pointer-events: all;
+        animation: modal-background 0.1s ease-in-out;
+        animation-fill-mode: forwards;
+      }
+
+      .overlay .custom-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 400px;
+        height: 200px;
+        max-width: 90%;
+        max-height: 90%;
+        animation: modal-scale 0.2s ease-in-out;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes modal-background {
+        100% {
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      @keyframes modal-scale {
+        90% {
+          transform: translate(-50%, -50%) scale(1.05);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pointer Events</h1>
+    <div class="container my-2 px-2 py-3" style="min-height: 50vh">
+      <button
+        type="button"
+        class="btn btn-primary px-4"
+        onclick="openCustomModal()"
+      >
+        Open custom modal
+      </button>
+    </div>
+    <div class="overlay" hidden>
+      <div class="custom-modal bg-body rounded-4 shadow-sm px-3 py-2">
+        <div class="modal-header mb-2">
+          <h1 class="modal-title fs-4">Custom Modal</h1>
+          <button
+            type="button"
+            class="btn-close float-end"
+            style="font-size: 1.25rem"
+            onclick="closeCustomModal()"
+          ></button>
+        </div>
+        <div class="modal-body">Some text should be here.</div>
+      </div>
+    </div>
+    <script>
+      window.onkeyup = onKeyUp;
+
+      function openCustomModal() {
+        toggleOverlay(true);
+        toggleHeaderNavigation(false);
+        toggleFooterInteraction(false);
+      }
+
+      function closeCustomModal() {
+        toggleOverlay(false);
+        toggleHeaderNavigation(true);
+        toggleFooterInteraction(true);
+      }
+
+      function toggleOverlay(toggle) {
+        const overlay = document.querySelector(".overlay");
+        if (overlay === null) {
+          return;
+        }
+
+        toggle
+          ? overlay.removeAttribute("hidden")
+          : overlay.setAttribute("hidden", true);
+      }
+
+      function toggleHeaderNavigation(toggle) {
+        const header = document.querySelector("body > header");
+        if (header === null) {
+          return;
+        }
+
+        const classToToggle = "sticky-top";
+        toggle
+          ? header.classList.add(classToToggle)
+          : header.classList.remove(classToToggle);
+      }
+
+      function toggleFooterInteraction(toggle) {
+        const footerCopyright = document.querySelector(
+          "body > footer .container .row:last-child"
+        );
+        if (footerCopyright === null) {
+          return;
+        }
+
+        const classToToggle = "opacity-50";
+        toggle
+          ? footerCopyright.classList.add(classToToggle)
+          : footerCopyright.classList.remove(classToToggle);
+      }
+
+      function onKeyUp(event) {
+        const overlay = document.querySelector(".overlay");
+        if (overlay === null) {
+          return;
+        }
+
+        if (
+          overlay.getAttribute("hidden") === null &&
+          (event.key === "Escape" || event.key === "Backspace")
+        ) {
+          closeCustomModal();
+        }
+      }
+    </script>
+  </body>
+</html>

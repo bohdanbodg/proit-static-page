@@ -208,3 +208,11 @@ a.file[href$=".docx"]::before {
 #clip-path .redbox-200:hover::after {
   content: "!";
 }
+@keyframes ellipse-anim {
+  100% {
+    clip-path: ellipse(50% 25%);
+  }
+}
+#clip-path .redbox-200:active {
+  animation: ellipse-anim 0.5s infinite ease-in-out alternate;
+}
