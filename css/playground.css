@@ -216,3 +216,13 @@ a.file[href$=".docx"]::before {
 #clip-path .redbox-200:active {
   animation: ellipse-anim 0.5s infinite ease-in-out alternate;
 }
+
+/* CSS user-select */
+#user-select p {
+  user-select: none;
+  color: tomato;
+}
+#user-select p.selectable-text {
+  user-select: text;
+  color: limegreen;
+}
