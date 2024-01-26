@@ -50,11 +50,33 @@
         transform: scale(1.02);
         border-color: rgba(var(--bs-black-rgb), 0.2) !important;
       }
+
+      /* CSS Modified Grid */
+      .custom-grid {
+        display: grid;
+        grid-template: 1fr auto / 1fr 1.5fr;
+        gap: 10px;
+        text-align: center;
+      }
+      .custom-grid header {
+        background-color: lightblue;
+        grid-column: auto;
+      }
+      .custom-grid main {
+        background-color: lightgreen;
+        grid-column: auto;
+      }
+      .custom-grid aside {
+        background-color: lightpink;
+        grid-column: 1 / -1;
+      }
     </style>
   </head>
   <body>
     <h1>Grid</h1>
-    <div class="custom-container p-2 border">
+
+    <h2>Custom Grid</h2>
+    <div class="custom-container mb-3 p-2 border">
       <header class="m-1 p-2 border border-black border-opacity-10 shadow-sm">
         header
       </header>
@@ -67,6 +89,20 @@
       <footer class="m-1 p-2 border border-black border-opacity-10 shadow-sm">
         footer
       </footer>
+    </div>
+
+    <!-- CSS Modified Grid -->
+    <h2>Modified Grid</h2>
+    <div class="custom-grid border p-2" id="modified-grid">
+      <header>
+        <h2>My Website</h2>
+      </header>
+      <main>
+        <p>This is the main content of my website.</p>
+      </main>
+      <aside>
+        <p>This is the sidebar of my website.</p>
+      </aside>
     </div>
   </body>
 </html>
