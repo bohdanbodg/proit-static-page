@@ -230,3 +230,13 @@ a.file[href$=".docx"]::before {
   user-select: none;
   pointer-events: none;
 }
+
+/* CSS text-overflow */
+#text-overflow .custom-text-overflow {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: " [Read more...]";
+}
