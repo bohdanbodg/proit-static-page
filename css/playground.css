@@ -226,3 +226,7 @@ a.file[href$=".docx"]::before {
   user-select: text;
   color: limegreen;
 }
+#user-select p.selectable-text img {
+  user-select: none;
+  pointer-events: none;
+}
